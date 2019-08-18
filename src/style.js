@@ -11,6 +11,8 @@ export const GlobalStyle = createGlobalStyle`
 
 export const MainContainer = styled.div`
   display: flex;
+  min-height: 80vh;
+  align-items: center;
 `;
 
 export const PageContainer = styled.div`
