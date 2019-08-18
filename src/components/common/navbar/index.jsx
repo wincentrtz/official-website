@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   NavbarContainer,
@@ -11,8 +11,12 @@ import Logo from "assets/images/logo.svg";
 import Facebook from "assets/images/facebook.svg";
 import LinkedIn from "assets/images/linkedin.svg";
 import ClosedMenu from "assets/images/menu-closed.svg";
+import OpenMenu from "assets/images/menu-open.svg";
 
 const Navbar = () => {
+  const renderSidebarToggleIcon = () =>
+    true ? <img src={ClosedMenu} /> : <img src={OpenMenu} />;
+
   return (
     <NavbarContainer>
       <NavbarLeftSection>
@@ -25,9 +29,7 @@ const Navbar = () => {
         <NavbarItem>
           <img src={LinkedIn} />
         </NavbarItem>
-        <NavbarItem>
-          <img src={ClosedMenu} />
-        </NavbarItem>
+        <NavbarItem>{renderSidebarToggleIcon()}</NavbarItem>
       </NavbarRightSection>
     </NavbarContainer>
   );
