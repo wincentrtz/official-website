@@ -1,16 +1,40 @@
 import React from "react";
-import { SidebarItem } from "./style";
+import { connect } from "react-redux";
+
+import { toggleSidebarMenu } from "store/sidebar/actions";
+
+import { SidebarItem, SidebarItemNoValue } from "./style";
 
 const sidebarList = ["Home", "About", "Portfolio", "Resume", "Contact"];
 const activeSidebar = "Home";
 
-const renderSidebarItem = () =>
-  sidebarList.map(item => (
-    <SidebarItem isActive={item === activeSidebar} key={item}>
-      {item}
-    </SidebarItem>
-  ));
+const Sidebar = ({ isSidebarActive }) => {
+  const renderSidebarItem = () =>
+    sidebarList.map(item =>
+      isSidebarActive ? (
+        <SidebarItem isActive={item === activeSidebar} key={item}>
+          {item}
+        </SidebarItem>
+      ) : (
+        <SidebarItemNoValue isActive={item === activeSidebar} key={item} />
+      )
+    );
+  return renderSidebarItem();
+};
 
-const Sidebar = () => renderSidebarItem();
+const mapStateToProps = ({ sidebarReducers }) => {
+  return {
+    isSidebarActive: sidebarReducers.status
+  };
+};
 
-export default Sidebar;
+const mapDispatchToProps = dispatch => {
+  return {
+    toggleSidebarMenu: () => dispatch(toggleSidebarMenu())
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Sidebar);
