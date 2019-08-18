@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
+import { connect } from "react-redux";
+
+import { toggleSidebarMenu } from "store/sidebar/actions";
 
 import {
   NavbarContainer,
@@ -13,9 +16,9 @@ import LinkedIn from "assets/images/linkedin.svg";
 import ClosedMenu from "assets/images/menu-closed.svg";
 import OpenMenu from "assets/images/menu-open.svg";
 
-const Navbar = () => {
+const Navbar = ({ toggleSidebarMenu, isSidebarActive }) => {
   const renderSidebarToggleIcon = () =>
-    true ? <img src={ClosedMenu} /> : <img src={OpenMenu} />;
+    isSidebarActive ? <img src={ClosedMenu} /> : <img src={OpenMenu} />;
 
   return (
     <NavbarContainer>
@@ -29,10 +32,27 @@ const Navbar = () => {
         <NavbarItem>
           <img src={LinkedIn} />
         </NavbarItem>
-        <NavbarItem>{renderSidebarToggleIcon()}</NavbarItem>
+        <NavbarItem onClick={toggleSidebarMenu}>
+          {renderSidebarToggleIcon()}
+        </NavbarItem>
       </NavbarRightSection>
     </NavbarContainer>
   );
 };
 
-export default Navbar;
+const mapStateToProps = ({ sidebarReducers }) => {
+  return {
+    isSidebarActive: sidebarReducers.status
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    toggleSidebarMenu: () => dispatch(toggleSidebarMenu())
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Navbar);
