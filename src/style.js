@@ -12,6 +12,9 @@ export const GlobalStyle = createGlobalStyle`
     color: white;
     padding: 0 60px;
     font-family: Sailect;
+    @media (max-width: 768px) {
+      padding: 0 20px;
+    }
   }
 `;
 
@@ -21,13 +24,11 @@ export const MainContainer = styled.div`
   align-items: center;
 `;
 
-export const PageContainer = styled.div`
-  flex-grow: 9;
-`;
+export const PageContainer = styled.div``;
 export const SidebarContainer = styled.div`
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  margin-right: 20px;
+  position: absolute;
+  right: 80px;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;

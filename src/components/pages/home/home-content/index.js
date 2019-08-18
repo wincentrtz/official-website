@@ -3,7 +3,8 @@ import {
   HelloSection,
   NameSection,
   DescriptionSection,
-  DownloadButton
+  DownloadButton,
+  NameLabel
 } from "./style";
 
 const HomeContent = () => (
@@ -11,7 +12,9 @@ const HomeContent = () => (
     <HelloSection>
       <span>-</span> <span>Hello</span>
     </HelloSection>
-    <NameSection>I'm Wincent</NameSection>
+    <NameSection>
+      I'm <NameLabel>Wincent</NameLabel>
+    </NameSection>
     <DescriptionSection>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium,
       repellendus eveniet. Cumque necessitatibus, reprehenderit ratione aliquam
