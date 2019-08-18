@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const NavbarContainer = styled.div`
-  margin: 20px;
+  margin: 20px 0px;
   display: flex;
   justify-content: space-between;
   align-items: center;
