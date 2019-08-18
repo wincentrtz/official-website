@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { connect } from "react-redux";
 
 import { fetchActiveUser } from "store/user/user-actions";
-import Navbar from "../components/common/Navbar";
+import Navbar from "../components/common/navbar";
 import HomeDetail from "../components/pages/home/HomeDetail";
 
 class Home extends React.Component {
