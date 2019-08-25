@@ -15,18 +15,24 @@ export const GlobalStyle = createGlobalStyle`
     @media (max-width: 768px) {
       padding: 0 20px;
     }
+    overflow: hidden;
   }
 `;
 
-export const MainContainer = styled.div`
-  display: flex;
-  min-height: 80vh;
-  align-items: center;
+export const PageContainer = styled.div`
+  display: table-row;
 `;
 
-export const PageContainer = styled.div``;
+export const PageContent = styled.div`
+  display: table-cell;
+  vertical-align: middle;
+  height: 80vh;
+  width: 100%;
+`;
+
 export const SidebarContainer = styled.div`
   position: absolute;
+  top: 30%;
   right: 80px;
   @media (max-width: 768px) {
     display: none;
