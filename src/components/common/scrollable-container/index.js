@@ -1,46 +1,61 @@
-import React, { Component } from "react";
+import React from "react";
+import { connect } from "react-redux";
+
+import {
+  moveToNextPage,
+  moveToPreviousPage,
+  changeScrollStatus
+} from "store/page/actions";
+
 import { MainContainer } from "./style";
 
 const ONE_PAGE_HEIGHT_PROPERTY = -800;
-const INITIAL_PAGE = 0;
-class ScrollableContainer extends Component {
-  state = {
-    inScroll: false,
-    page: 0
+const NEXT_PAGE = "NEXT_PAGE";
+const PREVIOUS_PAGE = "PREVIOUS_PAGE";
+const ScrollableContainer = ({
+  children,
+  currentPage,
+  isScrolling,
+  moveToPreviousPage,
+  moveToNextPage
+}) => {
+  const scrollHeight = currentPage * ONE_PAGE_HEIGHT_PROPERTY;
+
+  const scrollPage = e => {
+    if (!isScrolling) {
+      const direction = e.deltaY < 0 ? PREVIOUS_PAGE : NEXT_PAGE;
+      updateCurrentPage(direction);
+    }
   };
 
-  wheel(e) {
-    const { inScroll } = this.state;
-    if (!inScroll) {
-      const direction = e.deltaY < 0 ? "up" : "down";
-      const page = this.getNewPage(direction);
-      this.setState({ inScroll: true, page });
-      setTimeout(() => {
-        this.setState({ inScroll: false });
-      }, 2000);
-    }
-  }
+  const updateCurrentPage = direction => {
+    if (direction === PREVIOUS_PAGE) moveToPreviousPage();
+    else moveToNextPage();
+  };
 
-  getNewPage(direction) {
-    let { page } = this.state;
-    const LAST_PAGE = this.props.children.length - 1;
-    if (direction === "up") page--;
-    else page++;
-    if (page < 0) page = INITIAL_PAGE;
-    else if (page > LAST_PAGE) page = LAST_PAGE;
-    return page;
-  }
+  return (
+    <div onWheel={e => scrollPage(e)}>
+      <MainContainer scrollHeight={scrollHeight}>{children}</MainContainer>
+    </div>
+  );
+};
 
-  render() {
-    const { children } = this.props;
-    const { page } = this.state;
-    const scrollHeight = page * ONE_PAGE_HEIGHT_PROPERTY;
-    return (
-      <MainContainer scrollHeight={scrollHeight} onWheel={e => this.wheel(e)}>
-        {children}
-      </MainContainer>
-    );
-  }
-}
+const mapStateToProps = ({ pageReducers }) => {
+  const { currentPage, isScrolling } = pageReducers;
+  return {
+    currentPage,
+    isScrolling
+  };
+};
 
-export default ScrollableContainer;
+const mapDispatchToProps = dispatch => {
+  return {
+    moveToNextPage: () => dispatch(moveToNextPage()),
+    moveToPreviousPage: () => dispatch(moveToPreviousPage())
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ScrollableContainer);
