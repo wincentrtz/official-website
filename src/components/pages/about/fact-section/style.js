@@ -8,11 +8,12 @@ export const FactContainer = styled.div`
 
 export const TitleSection = styled.h3`
   color: ${COLOR.FONT_PRIMARY};
+  margin-top: 100px;
 `;
 
 export const DescriptionSection = styled.p`
   color: ${COLOR.FONT_SECONDARY};
-  margin: 50px 100px;
+  margin: 0px 100px 50px 100px;
   font-size: 0.8em;
 `;
 
@@ -35,5 +36,4 @@ export const CardTitle = styled.div`
 export const CardDescription = styled.p`
   color: ${COLOR.FONT_SECONDARY};
   font-size: 0.7em;
-  text-align: right;
 `;
