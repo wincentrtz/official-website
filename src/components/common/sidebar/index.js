@@ -6,25 +6,25 @@ import { toggleSidebarMenu } from "store/sidebar/actions";
 import { SidebarItem, SidebarItemNoValue } from "./style";
 
 const sidebarList = ["Home", "About", "Portfolio", "Resume", "Contact"];
-const activeSidebar = "Home";
 
-const Sidebar = ({ isSidebarActive }) => {
+const Sidebar = ({ isSidebarActive, currentPage }) => {
   const renderSidebarItem = () =>
-    sidebarList.map(item =>
-      isSidebarActive ? (
-        <SidebarItem isActive={item === activeSidebar} key={item}>
+    sidebarList.map((item, index) => {
+      return isSidebarActive ? (
+        <SidebarItem isActive={index === currentPage} key={item}>
           {item}
         </SidebarItem>
       ) : (
-        <SidebarItemNoValue isActive={item === activeSidebar} key={item} />
-      )
-    );
+        <SidebarItemNoValue isActive={index === currentPage} key={item} />
+      );
+    });
   return renderSidebarItem();
 };
 
-const mapStateToProps = ({ sidebarReducers }) => {
+const mapStateToProps = ({ sidebarReducers, pageReducers }) => {
   return {
-    isSidebarActive: sidebarReducers.status
+    isSidebarActive: sidebarReducers.status,
+    currentPage: pageReducers.currentPage
   };
 };
 

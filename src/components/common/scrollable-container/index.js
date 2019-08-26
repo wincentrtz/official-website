@@ -1,17 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import {
-  moveToNextPage,
-  moveToPreviousPage,
-  changeScrollStatus
-} from "store/page/actions";
+import { moveToNextPage, moveToPreviousPage } from "store/page/actions";
 
 import { MainContainer } from "./style";
 
 const ONE_PAGE_HEIGHT_PROPERTY = -800;
 const NEXT_PAGE = "NEXT_PAGE";
 const PREVIOUS_PAGE = "PREVIOUS_PAGE";
+
 const ScrollableContainer = ({
   children,
   currentPage,
