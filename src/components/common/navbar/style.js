@@ -5,6 +5,8 @@ export const NavbarContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: absolute;
+  width: 90vw;
 `;
 export const NavbarLeftSection = styled.div``;
 export const NavbarRightSection = styled.div`
