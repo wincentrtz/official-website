@@ -26,8 +26,8 @@ const App = () => (
 );
 
 const renderPage = () =>
-  PAGE.map(p => (
-    <PageContainer>
+  PAGE.map((p, index) => (
+    <PageContainer key={index}>
       <PageContent>{p}</PageContent>
     </PageContainer>
   ));
