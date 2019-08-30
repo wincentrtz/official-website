@@ -5,7 +5,7 @@ import { moveToNextPage, moveToPreviousPage } from "store/page/actions";
 
 import { MainContainer } from "./style";
 
-const ONE_PAGE_HEIGHT_PROPERTY = -968;
+const ONE_PAGE_HEIGHT_PROPERTY = -document.documentElement.scrollHeight;
 const NEXT_PAGE = "NEXT_PAGE";
 const PREVIOUS_PAGE = "PREVIOUS_PAGE";
 

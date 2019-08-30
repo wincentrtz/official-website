@@ -33,7 +33,7 @@ export const PageContent = styled.div`
 export const SidebarContainer = styled.div`
   position: absolute;
   top: 30%;
-  right: 80px;
+  right: 5%;
   @media (max-width: 768px) {
     display: none;
   }

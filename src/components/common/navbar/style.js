@@ -7,6 +7,7 @@ export const NavbarContainer = styled.div`
   align-items: center;
   position: absolute;
   width: 90vw;
+  z-index: 999;
 `;
 export const NavbarLeftSection = styled.div``;
 export const NavbarRightSection = styled.div`

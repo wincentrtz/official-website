@@ -32,8 +32,9 @@ class FactSection extends Component {
 
   componentDidUpdate() {
     const { isCalled } = this.state;
-    if (this.props.currentPage === 1 && !isCalled) {
-      this.props.fetchAllFacts();
+    const { fetchAllFacts, currentPage } = this.props;
+    if (currentPage === 1 && !isCalled) {
+      fetchAllFacts();
       this.setState({ isCalled: true });
     }
   }
