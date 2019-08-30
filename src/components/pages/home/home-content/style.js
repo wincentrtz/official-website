@@ -2,7 +2,7 @@ import styled from "styled-components";
 import COLOR from "constants/apps/colors";
 
 export const HelloSection = styled.h2`
-  color: ${COLOR.SECONDARY};
+  color: ${COLOR.FONT_PRIMARY};
 `;
 export const NameSection = styled.label`
   font-size: 3em;
@@ -12,7 +12,7 @@ export const NameSection = styled.label`
   }
 `;
 export const NameLabel = styled.label`
-  color: ${COLOR.SECONDARY};
+  color: ${COLOR.FONT_PRIMARY};
 `;
 export const DescriptionSection = styled.p`
   color: ${COLOR.FONT_SECONDARY};
@@ -20,7 +20,7 @@ export const DescriptionSection = styled.p`
   font-size: 0.9em;
 `;
 export const DownloadButton = styled.button`
-  background-color: ${COLOR.SECONDARY};
+  background-color: ${COLOR.FONT_PRIMARY};
   font-weight: bold;
   border: none;
   padding: 10px 20px;

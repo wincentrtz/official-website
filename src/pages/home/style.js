@@ -2,6 +2,9 @@ import styled from "styled-components";
 
 export const HomePageContainer = styled.div`
   display: flex;
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
 `;
 export const ImageSection = styled.div`
   flex-grow: 1;
@@ -16,6 +19,6 @@ export const ContentSection = styled.div`
   flex-grow: 1;
   max-width: 35%;
   @media (max-width: 768px) {
-    max-width: 100%;
+    max-width: 90%;
   }
 `;

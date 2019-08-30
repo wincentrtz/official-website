@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
-import COLORS from "constants/apps/colors";
+import COLOR from "constants/apps/colors";
 import Sailec from "assets/fonts/sailec.otf";
 
 export const GlobalStyle = createGlobalStyle`
@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
     src: url(${Sailec});
   }
   body {
-    background-color: ${COLORS.PRIMARY};
+    background-color: ${COLOR.PRIMARY};
     color: white;
     padding: 0 60px;
     font-family: Sailect;
@@ -26,14 +26,14 @@ export const PageContainer = styled.div`
 export const PageContent = styled.div`
   display: table-cell;
   vertical-align: middle;
-  height: 80vh;
+  height: 100vh;
   width: 100%;
 `;
 
 export const SidebarContainer = styled.div`
   position: absolute;
   top: 30%;
-  right: 80px;
+  right: 5%;
   @media (max-width: 768px) {
     display: none;
   }
