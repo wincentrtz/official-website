@@ -13,7 +13,7 @@ import Sidebar from "./components/common/sidebar";
 import ScrollableContainer from "./components/common/scrollable-container";
 import About from "./pages/about";
 
-const PAGE = [<Home />, <About />, <Home />];
+const PAGE = [<Home />, <About />];
 
 const App = () => (
   <Fragment>

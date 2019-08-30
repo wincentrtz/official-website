@@ -1,3 +1,4 @@
 import users from "./users";
+import facts from "./facts";
 
-export default [...users];
+export default [...users, ...facts];

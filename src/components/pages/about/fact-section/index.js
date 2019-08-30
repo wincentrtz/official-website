@@ -1,4 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+
+import { fetchAllFacts } from "store/fact/actions";
 
 import {
   TitleSection,
@@ -15,53 +18,65 @@ import Coffee from "assets/images/coffee.svg";
 import Github from "assets/images/github.svg";
 import ProgrammingLanguage from "assets/images/programming-language.svg";
 
-const facts = [
-  {
-    title: "Book Readed",
-    icon: Book,
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, repellendus eveniet."
-  },
-  {
-    title: "Coffee Consumption",
-    icon: Coffee,
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, repellendus eveniet."
-  },
-  {
-    title: "My Github",
-    icon: Github,
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, repellendus eveniet."
-  },
-  {
-    title: "Programming Language",
-    icon: ProgrammingLanguage,
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, repellendus eveniet."
+class FactSection extends Component {
+  state = {
+    isCalled: false
+  };
+
+  ICON = {
+    "Book Readed": Book,
+    "Coffee Consumption": Coffee,
+    "My github": Github,
+    "Programming Language": ProgrammingLanguage
+  };
+
+  componentDidUpdate() {
+    const { isCalled } = this.state;
+    if (this.props.currentPage === 1 && !isCalled) {
+      this.props.fetchAllFacts();
+      this.setState({ isCalled: true });
+    }
   }
-];
 
-const FactSection = () => (
-  <FactContainer>
-    <TitleSection>Facts About Me</TitleSection>
-    <DescriptionSection>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium,
-      repellendus eveniet. Cumque necessitatibus, reprehenderit ratione aliquam
-      alias repudiandae obcaecati, fugiat sint repellat laboriosam suscipit
-      magnam eius soluta voluptatibus voluptatem molestiae.
-    </DescriptionSection>
-    <CardContainer>{renderFact()}</CardContainer>
-  </FactContainer>
-);
+  renderFact = () =>
+    this.props.facts.map(f => (
+      <CardFact key={f.title}>
+        <img src={this.ICON[f.title]} />
+        <CardTitle>{f.title}</CardTitle>
+        <CardDescription>{f.description}</CardDescription>
+      </CardFact>
+    ));
 
-const renderFact = () =>
-  facts.map(f => (
-    <CardFact>
-      <img src={f.icon} />
-      <CardTitle>{f.title}</CardTitle>
-      <CardDescription>{f.description}</CardDescription>
-    </CardFact>
-  ));
+  render() {
+    return (
+      <FactContainer>
+        <TitleSection>Facts About Me</TitleSection>
+        <DescriptionSection>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium,
+          repellendus eveniet. Cumque necessitatibus, reprehenderit ratione
+          aliquam alias repudiandae obcaecati, fugiat sint repellat laboriosam
+          suscipit magnam eius soluta voluptatibus voluptatem molestiae.
+        </DescriptionSection>
+        <CardContainer>{this.renderFact()}</CardContainer>
+      </FactContainer>
+    );
+  }
+}
 
-export default FactSection;
+const mapStateToProps = ({ factReducers, pageReducers }) => {
+  return {
+    facts: factReducers.facts,
+    currentPage: pageReducers.currentPage
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchAllFacts: () => dispatch(fetchAllFacts())
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(FactSection);
