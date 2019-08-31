@@ -2,14 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { toggleSidebarMenu } from "store/sidebar/actions";
-
 import {
   NavbarContainer,
   NavbarLeftSection,
   NavbarRightSection,
   NavbarItem
 } from "./style";
-
 import Logo from "assets/images/logo.svg";
 import Facebook from "assets/images/facebook.svg";
 import LinkedIn from "assets/images/linkedin.svg";
@@ -32,7 +30,7 @@ const Navbar = ({ toggleSidebarMenu, isSidebarActive }) => {
         <NavbarItem>
           <img src={LinkedIn} />
         </NavbarItem>
-        <NavbarItem onClick={toggleSidebarMenu}>
+        <NavbarItem marginLeft={60} onClick={toggleSidebarMenu}>
           {renderSidebarToggleIcon()}
         </NavbarItem>
       </NavbarRightSection>

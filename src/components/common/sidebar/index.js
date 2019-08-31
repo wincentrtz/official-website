@@ -2,22 +2,21 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { toggleSidebarMenu } from "store/sidebar/actions";
-
 import { SidebarItem, SidebarItemNoValue } from "./style";
 
-const sidebarList = ["Home", "About", "Portfolio", "Resume", "Contact"];
+const SIDEBAR_LIST = ["Home", "About", "Portfolio", "Resume", "Contact"];
 
 const Sidebar = ({ isSidebarActive, currentPage }) => {
   const renderSidebarItem = () =>
-    sidebarList.map((item, index) => {
-      return isSidebarActive ? (
+    SIDEBAR_LIST.map((item, index) =>
+      isSidebarActive ? (
         <SidebarItem isActive={index === currentPage} key={item}>
           {item}
         </SidebarItem>
       ) : (
         <SidebarItemNoValue isActive={index === currentPage} key={item} />
-      );
-    });
+      )
+    );
   return renderSidebarItem();
 };
 

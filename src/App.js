@@ -1,17 +1,16 @@
 import React, { Fragment } from "react";
 
+import Navbar from "./components/common/navbar";
+import Sidebar from "./components/common/sidebar";
+import ScrollableContainer from "./components/common/scrollable-container";
 import Home from "pages/home";
-
+import About from "./pages/about";
 import {
   GlobalStyle,
   PageContainer,
   SidebarContainer,
   PageContent
 } from "./style";
-import Navbar from "./components/common/navbar";
-import Sidebar from "./components/common/sidebar";
-import ScrollableContainer from "./components/common/scrollable-container";
-import About from "./pages/about";
 
 const PAGE = [<Home />, <About />];
 

@@ -6,7 +6,7 @@ export const NavbarContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   position: absolute;
-  width: 90vw;
+  width: 92vw;
   z-index: 999;
 `;
 export const NavbarLeftSection = styled.div``;
@@ -15,4 +15,5 @@ export const NavbarRightSection = styled.div`
 `;
 export const NavbarItem = styled.div`
   padding: 10px;
+  margin-left: ${props => props.marginLeft}px;
 `;

@@ -12,10 +12,10 @@ export const GlobalStyle = createGlobalStyle`
     color: white;
     padding: 0 60px;
     font-family: Sailect;
+    overflow: hidden;
     @media (max-width: 768px) {
       padding: 0 20px;
     }
-    overflow: hidden;
   }
 `;
 

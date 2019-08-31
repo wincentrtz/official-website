@@ -4,9 +4,9 @@ import {
   ContentSection,
   TitleSection,
   DescriptionSection,
-  ImageSection
+  ImageSection,
+  DownloadButton
 } from "./style";
-import { DownloadButton } from "./style";
 
 const AboutSection = () => (
   <AboutContainer>

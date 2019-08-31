@@ -15,7 +15,8 @@ const pageReducers = (state = sidebarState, action) => {
     case MOVE_TO_PREVIOUS_PAGE:
       return {
         ...state,
-        currentPage: --state.currentPage
+        currentPage:
+          state.currentPage !== 0 ? --state.currentPage : state.currentPage
       };
     case CHANGE_SCROLL_STATUS:
       const isScrolling = !state.isScrolling;
