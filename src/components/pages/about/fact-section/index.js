@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { fetchAllFacts } from "store/fact/actions";
-
 import {
   TitleSection,
   DescriptionSection,
@@ -12,37 +11,35 @@ import {
   CardTitle,
   CardDescription
 } from "./style";
-
 import Book from "assets/images/book.svg";
 import Coffee from "assets/images/coffee.svg";
 import Github from "assets/images/github.svg";
 import ProgrammingLanguage from "assets/images/programming-language.svg";
+
+const ICON = {
+  "Book Readed": Book,
+  "Coffee Consumption": Coffee,
+  "My github": Github,
+  "Programming Language": ProgrammingLanguage
+};
 
 class FactSection extends Component {
   state = {
     isCalled: false
   };
 
-  ICON = {
-    "Book Readed": Book,
-    "Coffee Consumption": Coffee,
-    "My github": Github,
-    "Programming Language": ProgrammingLanguage
-  };
-
-  componentDidUpdate() {
+  componentDidUpdate = () => {
     const { isCalled } = this.state;
     const { fetchAllFacts, currentPage } = this.props;
     if (currentPage === 1 && !isCalled) {
-      fetchAllFacts();
-      this.setState({ isCalled: true });
+      fetchAllFacts().then(() => this.setState({ isCalled: true }));
     }
-  }
+  };
 
   renderFact = () =>
     this.props.facts.map(f => (
       <CardFact key={f.title}>
-        <img src={this.ICON[f.title]} />
+        <img src={ICON[f.title]} />
         <CardTitle>{f.title}</CardTitle>
         <CardDescription>{f.description}</CardDescription>
       </CardFact>

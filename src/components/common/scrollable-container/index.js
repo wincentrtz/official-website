@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { moveToNextPage, moveToPreviousPage } from "store/page/actions";
-
 import { MainContainer } from "./style";
 
 const ONE_PAGE_HEIGHT_PROPERTY = -document.documentElement.scrollHeight;
