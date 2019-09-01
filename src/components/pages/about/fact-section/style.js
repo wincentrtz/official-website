@@ -61,3 +61,30 @@ export const CardDescription = styled.p`
     display: none;
   }
 `;
+
+export const ModalContainer = styled.div`
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  z-index: 999;
+  border-radius: 20px;
+  transition: all 1s ease;
+  background-color: ${COLOR.SECONDARY};
+  visibility: ${props => (props.showModal ? "visible" : "hidden")}
+  width: ${props => (props.showModal ? "80vw" : "0%")};
+  height: ${props => (props.showModal ? "60vh" : "0%")};
+`;
+
+export const ModalCloseButton = styled.button`
+  position: absolute;
+  right: 6px;
+  top: 9px;
+  cursor: pointer;
+  border: none;
+  font-size: 20px;
+`;

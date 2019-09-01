@@ -9,8 +9,10 @@ import {
   CardContainer,
   CardFact,
   CardTitle,
-  CardDescription
+  CardDescription,
+  ModalContainer
 } from "./style";
+import Modal from "components/common/modal";
 import Book from "assets/images/book.svg";
 import Coffee from "assets/images/coffee.svg";
 import Github from "assets/images/github.svg";
@@ -25,7 +27,8 @@ const ICON = {
 
 class FactSection extends Component {
   state = {
-    isCalled: false
+    isCalled: false,
+    showModal: false
   };
 
   componentDidUpdate = () => {
@@ -38,14 +41,21 @@ class FactSection extends Component {
 
   renderFact = () =>
     this.props.facts.map(f => (
-      <CardFact key={f.title}>
+      <CardFact key={f.title} onClick={this.toggleModal}>
         <img src={ICON[f.title]} />
         <CardTitle>{f.title}</CardTitle>
         <CardDescription>{f.description}</CardDescription>
       </CardFact>
     ));
 
+  toggleModal = () => {
+    this.setState({
+      showModal: !this.state.showModal
+    });
+  };
+
   render() {
+    const { showModal } = this.state;
     return (
       <FactContainer>
         <TitleSection>Facts About Me</TitleSection>
@@ -56,6 +66,9 @@ class FactSection extends Component {
           suscipit magnam eius soluta voluptatibus voluptatem molestiae.
         </DescriptionSection>
         <CardContainer>{this.renderFact()}</CardContainer>
+        <Modal>
+          <ModalContainer showModal={showModal}>a</ModalContainer>
+        </Modal>
       </FactContainer>
     );
   }
