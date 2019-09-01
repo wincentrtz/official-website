@@ -7,10 +7,7 @@ export const FactContainer = styled.div`
 
 export const TitleSection = styled.h3`
   color: ${COLOR.FONT_PRIMARY};
-  margin-top: 100px;
-  @media (max-width: 1024px) {
-    margin-top: 50px;
-  }
+  margin-top: 50px;
 `;
 
 export const DescriptionSection = styled.p`
