@@ -21,9 +21,7 @@ class Modal extends Component {
   }
 
   handleOpenModal = () => {
-    this.setState({
-      isOpen: true
-    });
+    this.setState({ isOpen: true });
   };
 
   handleCloseModal = () => {

@@ -14,8 +14,8 @@ export const DescriptionSection = styled.p`
   color: ${COLOR.FONT_SECONDARY};
   margin: 0px 100px 50px 100px;
   font-size: 0.8em;
-  @media (max-width: 1024px) {
-    display: none;
+  @media (max-width: 768px) {
+    margin: 30px 30px;
   }
 `;
 
@@ -42,16 +42,13 @@ export const CardFact = styled.div`
     margin-bottom: 40px;
   }
   @media (max-width: 768px) {
-    max-width: 30%;
+    max-width: 40%;
     margin-bottom: 20px;
   }
 `;
 
 export const CardTitle = styled.div`
   color: ${COLOR.FONT_SECONDARY};
-  @media (max-width: 768px) {
-    display: none;
-  }
 `;
 
 export const CardDescription = styled.p`
