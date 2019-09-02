@@ -37,7 +37,7 @@ export const CardFact = styled.div`
     -webkit-box-shadow: 0px 5px 10px 3px #000000;
     box-shadow: 0px 5px 10px 3px #000000;
   }
-  @media (max-width: 1600 px) {
+  @media (max-width: 1024px) {
     max-width: 40%;
     margin-bottom: 40px;
   }

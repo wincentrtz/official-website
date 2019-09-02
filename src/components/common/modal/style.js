@@ -17,6 +17,9 @@ export const ModalContainer = styled.div`
   visibility: ${props => (props.isOpen ? "visible" : "hidden")}
   width: ${props => (props.isOpen ? "75vw" : "0%")};
   height: ${props => (props.isOpen ? "70vh" : "0%")};
+  @media (max-width: 768px) {
+    width: ${props => (props.isOpen ? "80vw" : "0%")};
+  }
 `;
 
 export const ModalContent = styled.div`
