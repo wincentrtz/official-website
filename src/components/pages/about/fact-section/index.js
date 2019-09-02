@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, createRef } from "react";
 import { connect } from "react-redux";
 
 import { fetchAllFacts } from "store/fact/actions";
@@ -26,9 +26,10 @@ const ICON = {
 
 class FactSection extends Component {
   state = {
-    isCalled: false,
-    showModal: false
+    isCalled: false
   };
+
+  child = createRef();
 
   componentDidUpdate = () => {
     const { isCalled } = this.state;
@@ -40,25 +41,14 @@ class FactSection extends Component {
 
   renderFact = () =>
     this.props.facts.map(f => (
-      <CardFact key={f.title} onClick={this.openModal}>
+      <CardFact key={f.title} onClick={this.child.current.handleOpenModal}>
         <img src={ICON[f.title]} />
         <CardTitle>{f.title}</CardTitle>
         <CardDescription>{f.description}</CardDescription>
       </CardFact>
     ));
 
-  openModal = () => {
-    this.setState({
-      showModal: true
-    });
-  };
-
-  handleCloseModal = () => {
-    this.setState({ showModal: false });
-  };
-
   render() {
-    const { showModal } = this.state;
     return (
       <FactContainer>
         <TitleSection>Facts About Me</TitleSection>
@@ -69,7 +59,7 @@ class FactSection extends Component {
           suscipit magnam eius soluta voluptatibus voluptatem molestiae.
         </DescriptionSection>
         <CardContainer>{this.renderFact()}</CardContainer>
-        <Modal showModal={showModal} handleCloseModal={this.handleCloseModal}>
+        <Modal ref={this.child}>
           <div>a</div>
         </Modal>
       </FactContainer>

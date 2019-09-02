@@ -6,6 +6,10 @@ import OutsideAlerter from "../../../utils/outside-alerter";
 const modalRoot = document.getElementById("modal");
 
 class Modal extends Component {
+  state = {
+    isOpen: false
+  };
+
   element = document.createElement("div");
 
   componentDidMount() {
@@ -16,14 +20,25 @@ class Modal extends Component {
     modalRoot.removeChild(this.element);
   }
 
+  handleOpenModal = () => {
+    this.setState({
+      isOpen: true
+    });
+  };
+
+  handleCloseModal = () => {
+    this.setState({ isOpen: false });
+  };
+
   render() {
-    const { showModal, children, handleCloseModal } = this.props;
+    const { isOpen } = this.state;
+    const { children } = this.props;
     return createPortal(
-      <ModalContainer showModal={showModal}>
-        {showModal && (
+      <ModalContainer isOpen={isOpen}>
+        {isOpen && (
           <OutsideAlerter
-            showModal={showModal}
-            handleCloseModal={handleCloseModal}
+            isOpen={isOpen}
+            handleCloseModal={this.handleCloseModal}
           >
             <ModalContent>{children}</ModalContent>
           </OutsideAlerter>

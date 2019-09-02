@@ -14,9 +14,9 @@ export const ModalContainer = styled.div`
   border-radius: 20px;
   transition: all 0.5s ease;
   background-color: ${COLOR.SECONDARY};
-  visibility: ${props => (props.showModal ? "visible" : "hidden")}
-  width: ${props => (props.showModal ? "75vw" : "0%")};
-  height: ${props => (props.showModal ? "70vh" : "0%")};
+  visibility: ${props => (props.isOpen ? "visible" : "hidden")}
+  width: ${props => (props.isOpen ? "75vw" : "0%")};
+  height: ${props => (props.isOpen ? "70vh" : "0%")};
 `;
 
 export const ModalContent = styled.div`
