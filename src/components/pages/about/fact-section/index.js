@@ -9,8 +9,7 @@ import {
   CardContainer,
   CardFact,
   CardTitle,
-  CardDescription,
-  ModalContainer
+  CardDescription
 } from "./style";
 import Modal from "components/common/modal";
 import Book from "assets/images/book.svg";
@@ -66,9 +65,7 @@ class FactSection extends Component {
           suscipit magnam eius soluta voluptatibus voluptatem molestiae.
         </DescriptionSection>
         <CardContainer>{this.renderFact()}</CardContainer>
-        <Modal>
-          <ModalContainer showModal={showModal}>a</ModalContainer>
-        </Modal>
+        <Modal showModal={showModal}>a</Modal>
       </FactContainer>
     );
   }

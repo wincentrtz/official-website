@@ -1,5 +1,6 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import { createPortal } from "react-dom";
+import { ModalContainer } from "./style";
 
 const modalRoot = document.getElementById("modal");
 
@@ -17,7 +18,13 @@ class Modal extends Component {
     modalRoot.removeChild(this.element);
   }
   render() {
-    return createPortal(this.props.children, this.element);
+    const { showModal } = this.props;
+    return createPortal(
+      <ModalContainer showModal={showModal}>
+        {this.props.children}
+      </ModalContainer>,
+      this.element
+    );
   }
 }
 

@@ -27,8 +27,8 @@ export const CardContainer = styled.div`
 
 export const CardFact = styled.div`
   background-color: ${COLOR.SECONDARY};
-  max-width: 15%;
-  padding: 30px;
+  max-width: 20%;
+  padding: 10px 10px;
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.5s ease;
@@ -60,24 +60,6 @@ export const CardDescription = styled.p`
   @media (max-width: 768px) {
     display: none;
   }
-`;
-
-export const ModalContainer = styled.div`
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  padding: 20px;
-  text-align: center;
-  z-index: 999;
-  border-radius: 20px;
-  transition: all 1s ease;
-  background-color: ${COLOR.SECONDARY};
-  visibility: ${props => (props.showModal ? "visible" : "hidden")}
-  width: ${props => (props.showModal ? "80vw" : "0%")};
-  height: ${props => (props.showModal ? "60vh" : "0%")};
 `;
 
 export const ModalCloseButton = styled.button`

@@ -11,7 +11,7 @@ export const AboutContainer = styled.div`
 
 export const ContentSection = styled.div`
   flex-grow: 1;
-  max-width: 40%;
+  max-width: 60%;
   @media (max-width: 1024px) {
     max-width: 80%;
     text-align: center;
