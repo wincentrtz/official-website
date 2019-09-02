@@ -40,17 +40,21 @@ class FactSection extends Component {
 
   renderFact = () =>
     this.props.facts.map(f => (
-      <CardFact key={f.title} onClick={this.toggleModal}>
+      <CardFact key={f.title} onClick={this.openModal}>
         <img src={ICON[f.title]} />
         <CardTitle>{f.title}</CardTitle>
         <CardDescription>{f.description}</CardDescription>
       </CardFact>
     ));
 
-  toggleModal = () => {
+  openModal = () => {
     this.setState({
-      showModal: !this.state.showModal
+      showModal: true
     });
+  };
+
+  handleCloseModal = () => {
+    this.setState({ showModal: false });
   };
 
   render() {
@@ -65,7 +69,9 @@ class FactSection extends Component {
           suscipit magnam eius soluta voluptatibus voluptatem molestiae.
         </DescriptionSection>
         <CardContainer>{this.renderFact()}</CardContainer>
-        <Modal showModal={showModal}>a</Modal>
+        <Modal showModal={showModal} handleCloseModal={this.handleCloseModal}>
+          <div>a</div>
+        </Modal>
       </FactContainer>
     );
   }

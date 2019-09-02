@@ -18,3 +18,8 @@ export const ModalContainer = styled.div`
   width: ${props => (props.showModal ? "75vw" : "0%")};
   height: ${props => (props.showModal ? "70vh" : "0%")};
 `;
+
+export const ModalContent = styled.div`
+  width: 100%;
+  height: 70vh;
+`;

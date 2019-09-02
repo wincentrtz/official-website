@@ -1,14 +1,12 @@
 import React, { Component } from "react";
 import { createPortal } from "react-dom";
-import { ModalContainer } from "./style";
+import { ModalContainer, ModalContent } from "./style";
+import OutsideAlerter from "../../../utils/outside-alerter";
 
 const modalRoot = document.getElementById("modal");
 
 class Modal extends Component {
-  constructor(props) {
-    super(props);
-    this.element = document.createElement("div");
-  }
+  element = document.createElement("div");
 
   componentDidMount() {
     modalRoot.appendChild(this.element);
@@ -17,11 +15,19 @@ class Modal extends Component {
   componentWillUnmount() {
     modalRoot.removeChild(this.element);
   }
+
   render() {
-    const { showModal } = this.props;
+    const { showModal, children, handleCloseModal } = this.props;
     return createPortal(
       <ModalContainer showModal={showModal}>
-        {this.props.children}
+        {showModal && (
+          <OutsideAlerter
+            showModal={showModal}
+            handleCloseModal={handleCloseModal}
+          >
+            <ModalContent>{children}</ModalContent>
+          </OutsideAlerter>
+        )}
       </ModalContainer>,
       this.element
     );
