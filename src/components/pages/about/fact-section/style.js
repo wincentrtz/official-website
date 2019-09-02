@@ -14,8 +14,8 @@ export const DescriptionSection = styled.p`
   color: ${COLOR.FONT_SECONDARY};
   margin: 0px 100px 50px 100px;
   font-size: 0.8em;
-  @media (max-width: 1024px) {
-    display: none;
+  @media (max-width: 768px) {
+    margin: 30px 30px;
   }
 `;
 
@@ -27,8 +27,8 @@ export const CardContainer = styled.div`
 
 export const CardFact = styled.div`
   background-color: ${COLOR.SECONDARY};
-  max-width: 15%;
-  padding: 30px;
+  max-width: 20%;
+  padding: 10px 10px;
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.5s ease;
@@ -37,21 +37,18 @@ export const CardFact = styled.div`
     -webkit-box-shadow: 0px 5px 10px 3px #000000;
     box-shadow: 0px 5px 10px 3px #000000;
   }
-  @media (max-width: 1600 px) {
+  @media (max-width: 1024px) {
     max-width: 40%;
     margin-bottom: 40px;
   }
   @media (max-width: 768px) {
-    max-width: 30%;
+    max-width: 40%;
     margin-bottom: 20px;
   }
 `;
 
 export const CardTitle = styled.div`
   color: ${COLOR.FONT_SECONDARY};
-  @media (max-width: 768px) {
-    display: none;
-  }
 `;
 
 export const CardDescription = styled.p`
@@ -60,4 +57,13 @@ export const CardDescription = styled.p`
   @media (max-width: 768px) {
     display: none;
   }
+`;
+
+export const ModalCloseButton = styled.button`
+  position: absolute;
+  right: 6px;
+  top: 9px;
+  cursor: pointer;
+  border: none;
+  font-size: 20px;
 `;

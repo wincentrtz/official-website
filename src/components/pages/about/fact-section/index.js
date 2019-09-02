@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, createRef } from "react";
 import { connect } from "react-redux";
 
 import { fetchAllFacts } from "store/fact/actions";
@@ -11,6 +11,7 @@ import {
   CardTitle,
   CardDescription
 } from "./style";
+import Modal from "components/common/modal";
 import Book from "assets/images/book.svg";
 import Coffee from "assets/images/coffee.svg";
 import Github from "assets/images/github.svg";
@@ -28,6 +29,8 @@ class FactSection extends Component {
     isCalled: false
   };
 
+  child = createRef();
+
   componentDidUpdate = () => {
     const { isCalled } = this.state;
     const { fetchAllFacts, currentPage } = this.props;
@@ -38,7 +41,7 @@ class FactSection extends Component {
 
   renderFact = () =>
     this.props.facts.map(f => (
-      <CardFact key={f.title}>
+      <CardFact key={f.title} onClick={this.child.current.handleOpenModal}>
         <img src={ICON[f.title]} />
         <CardTitle>{f.title}</CardTitle>
         <CardDescription>{f.description}</CardDescription>
@@ -56,6 +59,9 @@ class FactSection extends Component {
           suscipit magnam eius soluta voluptatibus voluptatem molestiae.
         </DescriptionSection>
         <CardContainer>{this.renderFact()}</CardContainer>
+        <Modal ref={this.child}>
+          <div>a</div>
+        </Modal>
       </FactContainer>
     );
   }

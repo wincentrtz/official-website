@@ -16,4 +16,7 @@ export const NavbarRightSection = styled.div`
 export const NavbarItem = styled.div`
   padding: 10px;
   margin-left: ${props => props.marginLeft}px;
+  @media (max-width: 768px) {
+    margin-left: 0px;
+  }
 `;
