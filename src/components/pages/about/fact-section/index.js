@@ -26,7 +26,8 @@ const ICON = {
 
 class FactSection extends Component {
   state = {
-    isCalled: false
+    isCalled: false,
+    activeCard: null
   };
 
   child = createRef();
@@ -39,9 +40,14 @@ class FactSection extends Component {
     }
   };
 
+  handleCardModal = activeCard => {
+    this.child.current.handleOpenModal();
+    this.setState({ activeCard });
+  };
+
   renderFact = () =>
     this.props.facts.map(f => (
-      <CardFact key={f.title} onClick={this.child.current.handleOpenModal}>
+      <CardFact key={f.title} onClick={() => this.handleCardModal(f.title)}>
         <img src={ICON[f.title]} />
         <CardTitle>{f.title}</CardTitle>
         <CardDescription>{f.description}</CardDescription>
@@ -49,6 +55,7 @@ class FactSection extends Component {
     ));
 
   render() {
+    const { activeCard } = this.state;
     return (
       <FactContainer>
         <TitleSection>Facts About Me</TitleSection>
@@ -60,7 +67,7 @@ class FactSection extends Component {
         </DescriptionSection>
         <CardContainer>{this.renderFact()}</CardContainer>
         <Modal ref={this.child}>
-          <div>a</div>
+          <div>{activeCard}</div>
         </Modal>
       </FactContainer>
     );

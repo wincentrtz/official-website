@@ -12,7 +12,7 @@ export const ModalContainer = styled.div`
   text-align: center;
   z-index: 999;
   border-radius: 20px;
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
   background-color: ${COLOR.SECONDARY};
   visibility: ${props => (props.isOpen ? "visible" : "hidden")}
   width: ${props => (props.isOpen ? "75vw" : "0%")};
