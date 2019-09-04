@@ -4,9 +4,10 @@ import { connect } from "react-redux";
 import { moveToNextPage, moveToPreviousPage } from "store/page/actions";
 import { MainContainer } from "./style";
 
-const ONE_PAGE_HEIGHT_PROPERTY = -document.documentElement.scrollHeight;
-const NEXT_PAGE = "NEXT_PAGE";
-const PREVIOUS_PAGE = "PREVIOUS_PAGE";
+const ONE_PAGE_HEIGHT_PROPERTY = document.documentElement.scrollHeight;
+const DOWN = "DOWN";
+const UP = "UP";
+const EXPERIENCE_PAGE = 3;
 
 const ScrollableContainer = ({
   children,
@@ -15,17 +16,28 @@ const ScrollableContainer = ({
   moveToPreviousPage,
   moveToNextPage
 }) => {
-  const scrollHeight = currentPage * ONE_PAGE_HEIGHT_PROPERTY;
+  const scrollHeight = currentPage * -ONE_PAGE_HEIGHT_PROPERTY;
 
   const scrollPage = e => {
-    if (!isScrolling) {
-      const direction = e.deltaY < 0 ? PREVIOUS_PAGE : NEXT_PAGE;
+    if (isUseOnePageScroll(e.clientY)) {
+      const direction = e.deltaY < 0 ? UP : DOWN;
       updateCurrentPage(direction);
     }
   };
 
+  const isUseOnePageScroll = yAxis =>
+    !isScrolling &&
+    (currentPage !== EXPERIENCE_PAGE || !isOnExperienceCardScroll(yAxis));
+
+  const isOnExperienceCardScroll = yAxis =>
+    verticalPositionByPercentage(yAxis) >= 40 &&
+    verticalPositionByPercentage(yAxis) <= 75;
+
+  const verticalPositionByPercentage = yAxis =>
+    ((yAxis % ONE_PAGE_HEIGHT_PROPERTY) * 100) / ONE_PAGE_HEIGHT_PROPERTY;
+
   const updateCurrentPage = direction => {
-    if (direction === PREVIOUS_PAGE) moveToPreviousPage();
+    if (direction === UP) moveToPreviousPage();
     else moveToNextPage();
   };
 

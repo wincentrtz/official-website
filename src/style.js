@@ -17,6 +17,10 @@ export const GlobalStyle = createGlobalStyle`
       padding: 0 20px;
     }
   }
+  ::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+  }
 `;
 
 export const PageContainer = styled.div`

@@ -5,6 +5,7 @@ import Sidebar from "./components/common/sidebar";
 import ScrollableContainer from "./components/common/scrollable-container";
 import Home from "pages/home";
 import About from "./pages/about";
+import Experience from "./pages/experience";
 import {
   GlobalStyle,
   PageContainer,
@@ -12,7 +13,7 @@ import {
   PageContent
 } from "./style";
 
-const PAGE = [<Home />, <About />];
+const PAGE = [<Home />, <About />, <div>a</div>, <Experience />];
 
 const App = () => (
   <Fragment>
