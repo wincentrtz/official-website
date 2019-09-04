@@ -19,21 +19,22 @@ const ScrollableContainer = ({
   const scrollHeight = currentPage * -ONE_PAGE_HEIGHT_PROPERTY;
 
   const scrollPage = e => {
-    if (isUseOnePageScroll(e)) {
+    if (isUseOnePageScroll(e.clientY)) {
       const direction = e.deltaY < 0 ? PREVIOUS_PAGE : NEXT_PAGE;
       updateCurrentPage(direction);
     }
   };
 
-  const isUseOnePageScroll = e =>
+  const isUseOnePageScroll = yAxis =>
     !isScrolling &&
-    (currentPage !== EXPERIENCE_PAGE || !isOnExperienceCardScroll(e));
+    (currentPage !== EXPERIENCE_PAGE || !isOnExperienceCardScroll(yAxis));
 
-  const isOnExperienceCardScroll = e =>
-    mousePositionByPercentage(e) >= 40 && mousePositionByPercentage(e) <= 75;
+  const isOnExperienceCardScroll = yAxis =>
+    verticalPositionByPercentage(yAxis) >= 40 &&
+    verticalPositionByPercentage(yAxis) <= 75;
 
-  const mousePositionByPercentage = e =>
-    ((e.clientY % ONE_PAGE_HEIGHT_PROPERTY) * 100) / ONE_PAGE_HEIGHT_PROPERTY;
+  const verticalPositionByPercentage = yAxis =>
+    ((yAxis % ONE_PAGE_HEIGHT_PROPERTY) * 100) / ONE_PAGE_HEIGHT_PROPERTY;
 
   const updateCurrentPage = direction => {
     if (direction === PREVIOUS_PAGE) moveToPreviousPage();
