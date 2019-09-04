@@ -5,8 +5,8 @@ import { moveToNextPage, moveToPreviousPage } from "store/page/actions";
 import { MainContainer } from "./style";
 
 const ONE_PAGE_HEIGHT_PROPERTY = document.documentElement.scrollHeight;
-const NEXT_PAGE = "NEXT_PAGE";
-const PREVIOUS_PAGE = "PREVIOUS_PAGE";
+const DOWN = "DOWN";
+const UP = "UP";
 const EXPERIENCE_PAGE = 0;
 
 const ScrollableContainer = ({
@@ -20,7 +20,7 @@ const ScrollableContainer = ({
 
   const scrollPage = e => {
     if (isUseOnePageScroll(e.clientY)) {
-      const direction = e.deltaY < 0 ? PREVIOUS_PAGE : NEXT_PAGE;
+      const direction = e.deltaY < 0 ? UP : DOWN;
       updateCurrentPage(direction);
     }
   };
@@ -37,7 +37,7 @@ const ScrollableContainer = ({
     ((yAxis % ONE_PAGE_HEIGHT_PROPERTY) * 100) / ONE_PAGE_HEIGHT_PROPERTY;
 
   const updateCurrentPage = direction => {
-    if (direction === PREVIOUS_PAGE) moveToPreviousPage();
+    if (direction === UP) moveToPreviousPage();
     else moveToNextPage();
   };
 
