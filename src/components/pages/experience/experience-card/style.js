@@ -7,6 +7,7 @@ export const CardWrapper = styled.div`
   background-color: ${COLOR.SECONDARY};
   border-radius: 10px;
   height: 40vh;
+  cursor: all-scroll;
 `;
 
 export const CardHeader = styled.div`
