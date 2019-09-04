@@ -13,7 +13,7 @@ import {
   PageContent
 } from "./style";
 
-const PAGE = [<Experience />, <Home />, <About />, <div>a</div>];
+const PAGE = [<Home />, <About />, <div>a</div>, <Experience />];
 
 const App = () => (
   <Fragment>

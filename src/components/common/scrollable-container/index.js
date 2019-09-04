@@ -7,7 +7,7 @@ import { MainContainer } from "./style";
 const ONE_PAGE_HEIGHT_PROPERTY = document.documentElement.scrollHeight;
 const DOWN = "DOWN";
 const UP = "UP";
-const EXPERIENCE_PAGE = 0;
+const EXPERIENCE_PAGE = 3;
 
 const ScrollableContainer = ({
   children,
