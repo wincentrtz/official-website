@@ -1,7 +1,8 @@
 import {
   MOVE_TO_NEXT_PAGE,
   MOVE_TO_PREVIOUS_PAGE,
-  CHANGE_SCROLL_STATUS
+  CHANGE_SCROLL_STATUS,
+  GO_TO_PAGE
 } from "./constants";
 
 export const moveToNextPage = () => dispatch => {
@@ -27,5 +28,14 @@ export const moveToPreviousPage = () => dispatch => {
 export const changeScrollStatus = () => dispatch => {
   dispatch({
     type: CHANGE_SCROLL_STATUS
+  });
+};
+
+export const goToPage = page => async dispatch => {
+  dispatch({
+    type: GO_TO_PAGE,
+    payload: {
+      page
+    }
   });
 };
