@@ -1,7 +1,8 @@
 import {
   MOVE_TO_NEXT_PAGE,
   MOVE_TO_PREVIOUS_PAGE,
-  CHANGE_SCROLL_STATUS
+  CHANGE_SCROLL_STATUS,
+  GO_TO_PAGE
 } from "./constants";
 import sidebarState from "./state";
 
@@ -23,6 +24,11 @@ const pageReducers = (state = sidebarState, action) => {
       return {
         ...state,
         isScrolling
+      };
+    case GO_TO_PAGE:
+      return {
+        ...state,
+        currentPage: action.payload.page
       };
     default:
       return state;
