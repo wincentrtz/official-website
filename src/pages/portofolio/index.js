@@ -1,7 +1,7 @@
 import React from "react";
 import { TitleSection, DescriptionSection, PortofolioContainer } from "./style";
 import PortofolioTabs from "components/pages/portofolio/portofolio-tabs";
-import PortofolioContentSection from "../../components/pages/portofolio/portofolio-content-section";
+import PortofolioListSection from "components/pages/portofolio/portofolio-list-section";
 
 const Portofolio = () => (
   <PortofolioContainer>
@@ -12,7 +12,7 @@ const Portofolio = () => (
       alias repudiandae obcaecati.
     </DescriptionSection>
     <PortofolioTabs />
-    <PortofolioContentSection />
+    <PortofolioListSection />
   </PortofolioContainer>
 );
 

@@ -11,7 +11,7 @@ import {
 
 const CATEGORIES = ["java", "firebase"];
 
-const PortofolioContentSection = () => (
+const PortofolioListSection = () => (
   <PortofolioContentContainer>
     <ImageSection>Image Disini</ImageSection>
     <ContentSection>
@@ -38,4 +38,4 @@ const renderCategories = () =>
     <PortofolioCategoryTab>{category}</PortofolioCategoryTab>
   ));
 
-export default PortofolioContentSection;
+export default PortofolioListSection;
