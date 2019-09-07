@@ -17,5 +17,5 @@ export const TitleSection = styled.h1`
 `;
 
 export const DescriptionSection = styled.p`
-  margin: 0px 16vw;
+  margin: 0px 12vw;
 `;
