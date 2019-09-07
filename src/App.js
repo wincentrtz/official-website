@@ -6,6 +6,7 @@ import ScrollableContainer from "./components/common/scrollable-container";
 import Home from "pages/home";
 import About from "./pages/about";
 import Experience from "./pages/experience";
+import Portofolio from "./pages/portofolio";
 import {
   GlobalStyle,
   PageContainer,
@@ -13,7 +14,7 @@ import {
   PageContent
 } from "./style";
 
-const PAGE = [<Home />, <About />, <div>a</div>, <Experience />];
+const PAGE = [<Portofolio />, <Home />, <About />, <Experience />];
 
 const App = () => (
   <Fragment>
