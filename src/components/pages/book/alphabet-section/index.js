@@ -1,11 +1,17 @@
 import React, { useState, Fragment } from "react";
+import { connect } from "react-redux";
+
+import { fetchBooksByAlphabet } from "store/book/actions";
 import { AlphabetTab, AlphabetContainer, AlphabetTabWrapper } from "./style";
 
-const AlphabetSection = () => {
+const AlphabetSection = ({ handleFetchBooksByAlphabet }) => {
   const [activeAlphabet, setActiveAlphabet] = useState("A");
+
+  const options = { activeAlphabet };
 
   const handleAlphabetTabClick = alphabet => {
     setActiveAlphabet(alphabet);
+    handleFetchBooksByAlphabet(options);
   };
 
   const renderAlphabets = () => (
@@ -39,4 +45,14 @@ const AlphabetSection = () => {
   return <AlphabetContainer>{renderAlphabets()}</AlphabetContainer>;
 };
 
-export default AlphabetSection;
+const mapDispatchToProps = dispatch => {
+  return {
+    handleFetchBooksByAlphabet: options =>
+      dispatch(fetchBooksByAlphabet(options))
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(AlphabetSection);

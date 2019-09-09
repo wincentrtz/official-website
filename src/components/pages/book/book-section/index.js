@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+
 import {
   BookContainer,
   BookCard,
@@ -9,24 +11,16 @@ import {
   BookAuthor
 } from "./style";
 
-const BookUrl =
-  "https://images-na.ssl-images-amazon.com/images/I/41BjtnvIUQL._SX382_BO1,204,203,200_.jpg";
-
-const Books = Array(4).fill();
-
-const BookSection = () => {
+const BookSection = ({ books }) => {
   const renderBookCards = () =>
-    Books.map(() => (
-      <BookCard>
-        <BookCardImage src={BookUrl} />
+    books.map(book => (
+      <BookCard key={book.id}>
+        <BookCardImage src={book.imgUrl} />
         <BookCardContent>
-          <BookTitle>
-            The Subtle Art of Not Giving a F*ck: A Counterintuitive Approach To
-            Living A Good Life
-          </BookTitle>
+          <BookTitle>{book.title}</BookTitle>
           <div>
-            <BookAuthor>Mark Manson</BookAuthor>
-            <BookReleasedDate>2018</BookReleasedDate>
+            <BookAuthor>{book.author}</BookAuthor>
+            <BookReleasedDate>{book.releaseYear}</BookReleasedDate>
           </div>
         </BookCardContent>
       </BookCard>
@@ -35,4 +29,10 @@ const BookSection = () => {
   return <BookContainer>{renderBookCards()}</BookContainer>;
 };
 
-export default BookSection;
+const mapStateToProps = ({ bookReducers }) => {
+  return {
+    books: bookReducers.books
+  };
+};
+
+export default connect(mapStateToProps)(BookSection);

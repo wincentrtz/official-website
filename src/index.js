@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
@@ -12,7 +12,7 @@ require("mocks");
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <Route path="/" component={App} />
     </BrowserRouter>
   </Provider>,
   document.getElementById("root")

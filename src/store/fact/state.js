@@ -1,5 +1,5 @@
-const sidebarState = {
+const factState = {
   facts: []
 };
 
-export default sidebarState;
+export default factState;
