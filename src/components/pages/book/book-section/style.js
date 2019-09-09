@@ -15,6 +15,7 @@ export const BookCard = styled.div`
   padding: 1vw;
   margin: 1vw;
   display: flex;
+  border-radius: 10px;
 `;
 
 export const BookCardImage = styled.img`
