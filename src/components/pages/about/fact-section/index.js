@@ -12,16 +12,33 @@ import {
   CardDescription
 } from "./style";
 import Modal from "components/common/modal";
-import Book from "assets/images/book.svg";
+import BookIcon from "assets/images/book.svg";
 import Coffee from "assets/images/coffee.svg";
 import Github from "assets/images/github.svg";
 import ProgrammingLanguage from "assets/images/programming-language.svg";
+import BookPage from "pages/book";
 
-const ICON = {
-  "Book Readed": Book,
-  "Coffee Consumption": Coffee,
-  "My github": Github,
-  "Programming Language": ProgrammingLanguage
+const FACTS = {
+  "Book Readed": {
+    title: "Book Readed",
+    content: <BookPage />,
+    icon: BookIcon
+  },
+  "Coffee Consumption": {
+    title: "Coffee Consumption",
+    content: <BookPage />,
+    icon: Coffee
+  },
+  "My github": {
+    title: "My github",
+    content: <BookPage />,
+    icon: Github
+  },
+  "Programming Language": {
+    title: "Programming Language",
+    content: <BookPage />,
+    icon: ProgrammingLanguage
+  }
 };
 
 class FactSection extends Component {
@@ -48,7 +65,7 @@ class FactSection extends Component {
   renderFact = () =>
     this.props.facts.map(f => (
       <CardFact key={f.title} onClick={() => this.handleCardModal(f.title)}>
-        <img src={ICON[f.title]} />
+        <img src={FACTS[f.title].icon} />
         <CardTitle>{f.title}</CardTitle>
         <CardDescription>{f.description}</CardDescription>
       </CardFact>
@@ -67,7 +84,7 @@ class FactSection extends Component {
         </DescriptionSection>
         <CardContainer>{this.renderFact()}</CardContainer>
         <Modal ref={this.child}>
-          <div>{activeCard}</div>
+          {activeCard && FACTS[activeCard].content}
         </Modal>
       </FactContainer>
     );
