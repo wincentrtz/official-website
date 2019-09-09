@@ -9,7 +9,7 @@ const AlphabetSection = () => {
   };
 
   const renderAlphabets = () =>
-    Array(26)
+    Array(13)
       .fill()
       .map((_, i) => {
         const alphabet = String.fromCharCode(65 + i);
