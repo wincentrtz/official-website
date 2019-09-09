@@ -14,18 +14,21 @@ import {
   PageContent
 } from "./style";
 
-const PAGE = [<Home />, <About />, <Portofolio />, <Experience />];
+const PAGE = [<Home />, <About />, <Experience />];
 
-const App = () => (
-  <Fragment>
-    <GlobalStyle />
-    <Navbar />
-    <ScrollableContainer>{renderPage()}</ScrollableContainer>
-    <SidebarContainer>
-      <Sidebar />
-    </SidebarContainer>
-  </Fragment>
-);
+const App = props => {
+  console.log(props);
+  return (
+    <Fragment>
+      <GlobalStyle />
+      <Navbar />
+      <ScrollableContainer>{renderPage()}</ScrollableContainer>
+      <SidebarContainer>
+        <Sidebar />
+      </SidebarContainer>
+    </Fragment>
+  );
+};
 
 const renderPage = () =>
   PAGE.map((p, index) => (

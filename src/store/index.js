@@ -4,12 +4,14 @@ import userReducers from "./user/user-reducers";
 import sidebarReducers from "./sidebar/reducers";
 import pageReducers from "./page/reducers";
 import factReducers from "./fact/reducers";
+import bookReducers from "./book/reducers";
 
 const rootReducer = combineReducers({
   userReducers,
   sidebarReducers,
   pageReducers,
-  factReducers
+  factReducers,
+  bookReducers
 });
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
