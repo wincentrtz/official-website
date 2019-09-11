@@ -21,19 +21,16 @@ const PAGE = [
   <ExperiencePage />
 ];
 
-const App = props => {
-  console.log(props);
-  return (
-    <Fragment>
-      <GlobalStyle />
-      <Navbar />
-      <ScrollableContainer>{renderPage()}</ScrollableContainer>
-      <SidebarContainer>
-        <Sidebar />
-      </SidebarContainer>
-    </Fragment>
-  );
-};
+const App = props => (
+  <Fragment>
+    <GlobalStyle />
+    <Navbar />
+    <ScrollableContainer>{renderPage()}</ScrollableContainer>
+    <SidebarContainer>
+      <Sidebar />
+    </SidebarContainer>
+  </Fragment>
+);
 
 const renderPage = () =>
   PAGE.map((p, index) => (
