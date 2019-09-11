@@ -3,10 +3,10 @@ import React, { Fragment } from "react";
 import Navbar from "./components/common/navbar";
 import Sidebar from "./components/common/sidebar";
 import ScrollableContainer from "./components/common/scrollable-container";
-import Home from "pages/home";
-import About from "./pages/about";
-import Experience from "./pages/experience";
-import Portofolio from "./pages/portofolio";
+import HomePage from "pages/home";
+import AboutPage from "./pages/about";
+import ExperiencePage from "./pages/experience";
+import PortofolioPage from "./pages/portofolio";
 import {
   GlobalStyle,
   PageContainer,
@@ -14,7 +14,12 @@ import {
   PageContent
 } from "./style";
 
-const PAGE = [<Home />, <About />, <Experience />];
+const PAGE = [
+  <HomePage />,
+  <AboutPage />,
+  <PortofolioPage />,
+  <ExperiencePage />
+];
 
 const App = props => {
   console.log(props);

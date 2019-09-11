@@ -1,9 +1,10 @@
 import React from "react";
-import { TitleSection, DescriptionSection, PortofolioContainer } from "./style";
+
 import PortofolioTabs from "components/pages/portofolio/portofolio-tabs";
 import PortofolioListSection from "components/pages/portofolio/portofolio-list-section";
+import { TitleSection, DescriptionSection, PortofolioContainer } from "./style";
 
-const Portofolio = () => (
+const PortofolioPage = () => (
   <PortofolioContainer>
     <TitleSection>Portofolio</TitleSection>
     <DescriptionSection>
@@ -16,4 +17,4 @@ const Portofolio = () => (
   </PortofolioContainer>
 );
 
-export default Portofolio;
+export default PortofolioPage;

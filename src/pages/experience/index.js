@@ -1,14 +1,9 @@
 import React from "react";
-import {
-  TitleSection,
-  DescriptionSection,
-  ExperienceContainer,
-  ExperienceCardContainer,
-  ExperienceScrollWrapper
-} from "./style";
-import ExperienceCard from "components/pages/experience/experience-card";
 
-const Experience = () => (
+import ExperienceCardSection from "components/pages/experience/experience-card-section";
+import { TitleSection, DescriptionSection, ExperienceContainer } from "./style";
+
+const ExperiencePage = () => (
   <ExperienceContainer>
     <TitleSection>Experience Resume</TitleSection>
     <DescriptionSection>
@@ -17,15 +12,8 @@ const Experience = () => (
       alias repudiandae obcaecati, fugiat sint repellat laboriosam suscipit
       magnam eius soluta voluptatibus voluptatem molestiae.
     </DescriptionSection>
-    <ExperienceCardContainer>
-      <ExperienceScrollWrapper>
-        <ExperienceCard />
-        <ExperienceCard />
-        <ExperienceCard />
-        <ExperienceCard />
-      </ExperienceScrollWrapper>
-    </ExperienceCardContainer>
+    <ExperienceCardSection />
   </ExperienceContainer>
 );
 
-export default Experience;
+export default ExperiencePage;

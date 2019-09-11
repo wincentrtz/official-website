@@ -6,6 +6,7 @@ export const HomePageContainer = styled.div`
     justify-content: center;
   }
 `;
+
 export const ImageSection = styled.div`
   flex-grow: 1;
   max-width: 50%;
@@ -15,6 +16,7 @@ export const ImageSection = styled.div`
     display: none;
   }
 `;
+
 export const ContentSection = styled.div`
   flex-grow: 1;
   max-width: 35%;

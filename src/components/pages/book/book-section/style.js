@@ -13,7 +13,7 @@ export const BookContainer = styled.div`
 `;
 
 export const BookCard = styled.div`
-  width: 100%;
+  width: 100%;go
   max-width: 28vw;
   background-color: ${COLOR.PRIMARY}
   padding: 1vw;
@@ -53,12 +53,16 @@ export const BookTitle = styled.h4`
     font-size: 0.7em;
   }
 `;
+
+export const BookDescription = styled.div``;
+
 export const BookAuthor = styled.h5`
   margin: 0;
   @media (max-width: 768px) {
     font-size: 0.5em;
   }
 `;
+
 export const BookReleasedDate = styled.h5`
   margin: 0;
   @media (max-width: 768px) {
