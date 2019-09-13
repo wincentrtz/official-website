@@ -21,7 +21,7 @@ const BookSection = ({ books }) => {
           <BookTitle>{book.title}</BookTitle>
           <BookDescription>
             <BookAuthor>{book.author}</BookAuthor>
-            <BookReleasedDate>{book.releaseYear}</BookReleasedDate>
+            <BookReleasedDate>{book.releasedYear}</BookReleasedDate>
           </BookDescription>
         </BookCardContent>
       </BookCard>

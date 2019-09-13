@@ -14,14 +14,9 @@ import {
   PageContent
 } from "./style";
 
-const PAGE = [
-  <HomePage />,
-  <AboutPage />,
-  <PortofolioPage />,
-  <ExperiencePage />
-];
+const PAGE = [<HomePage />, <AboutPage />, <ExperiencePage />];
 
-const App = props => (
+const App = () => (
   <Fragment>
     <GlobalStyle />
     <Navbar />

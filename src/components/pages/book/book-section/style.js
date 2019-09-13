@@ -7,13 +7,11 @@ export const BookContainer = styled.div`
   flex-wrap: wrap;
   justify-content: space-around;
   overflow: scroll;
-  @media (max-width: 768px) {
-    height: 50vh;
-  }
+  height: 50vh;
 `;
 
 export const BookCard = styled.div`
-  width: 100%;go
+  width: 100%;
   max-width: 28vw;
   background-color: ${COLOR.PRIMARY}
   padding: 1vw;
