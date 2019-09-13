@@ -7,9 +7,7 @@ export const BookContainer = styled.div`
   flex-wrap: wrap;
   justify-content: space-around;
   overflow: scroll;
-  @media (max-width: 768px) {
-    height: 50vh;
-  }
+  height: 50vh;
 `;
 
 export const BookCard = styled.div`
@@ -53,12 +51,16 @@ export const BookTitle = styled.h4`
     font-size: 0.7em;
   }
 `;
+
+export const BookDescription = styled.div``;
+
 export const BookAuthor = styled.h5`
   margin: 0;
   @media (max-width: 768px) {
     font-size: 0.5em;
   }
 `;
+
 export const BookReleasedDate = styled.h5`
   margin: 0;
   @media (max-width: 768px) {

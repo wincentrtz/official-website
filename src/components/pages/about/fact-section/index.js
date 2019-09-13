@@ -2,6 +2,8 @@ import React, { Component, createRef } from "react";
 import { connect } from "react-redux";
 
 import { fetchAllFacts } from "store/fact/actions";
+import BookPage from "pages/book";
+import Modal from "components/common/modal";
 import {
   TitleSection,
   DescriptionSection,
@@ -11,12 +13,10 @@ import {
   CardTitle,
   CardDescription
 } from "./style";
-import Modal from "components/common/modal";
 import BookIcon from "assets/images/book.svg";
 import Coffee from "assets/images/coffee.svg";
 import Github from "assets/images/github.svg";
 import ProgrammingLanguage from "assets/images/programming-language.svg";
-import BookPage from "pages/book";
 
 const FACTS = {
   "Book Readed": {

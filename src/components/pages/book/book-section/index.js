@@ -8,7 +8,8 @@ import {
   BookCardContent,
   BookTitle,
   BookReleasedDate,
-  BookAuthor
+  BookAuthor,
+  BookDescription
 } from "./style";
 
 const BookSection = ({ books }) => {
@@ -18,10 +19,10 @@ const BookSection = ({ books }) => {
         <BookCardImage src={book.imgUrl} />
         <BookCardContent>
           <BookTitle>{book.title}</BookTitle>
-          <div>
+          <BookDescription>
             <BookAuthor>{book.author}</BookAuthor>
-            <BookReleasedDate>{book.releaseYear}</BookReleasedDate>
-          </div>
+            <BookReleasedDate>{book.releasedYear}</BookReleasedDate>
+          </BookDescription>
         </BookCardContent>
       </BookCard>
     ));
