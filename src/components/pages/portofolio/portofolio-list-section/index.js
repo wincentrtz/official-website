@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { connect } from "react-redux";
 
 import {
   PortofolioContentContainer,
@@ -13,23 +14,21 @@ import {
 
 const CATEGORIES = ["java", "firebase"];
 
-const ActiveContent = "MOBILE";
-
-const PortofolioListSection = () => (
+const PortofolioListSection = ({ activeTab }) => (
   <PortofolioContentContainer>
-    {renderPortfolioContent()}
+    {renderPortfolioContent(activeTab)}
   </PortofolioContentContainer>
 );
 
-const renderPortfolioContent = () => (
+const renderPortfolioContent = activeTab => (
   <Fragment>
-    <ContentContainer isVisible={ActiveContent === "MOBILE"}>
+    <ContentContainer isVisible={activeTab === "MOBILE"}>
       {portfolioContent("Mobile")}
     </ContentContainer>
-    <ContentContainer isVisible={ActiveContent === "WEB"}>
+    <ContentContainer isVisible={activeTab === "WEB"}>
       {portfolioContent("Web")}
     </ContentContainer>
-    <ContentContainer isVisible={ActiveContent === "COMPETITION"}>
+    <ContentContainer isVisible={activeTab === "COMPETITION"}>
       {portfolioContent("Competition")}
     </ContentContainer>
   </Fragment>
@@ -62,4 +61,10 @@ const renderCategories = () =>
     <PortofolioCategoryTab key={category}>{category}</PortofolioCategoryTab>
   ));
 
-export default PortofolioListSection;
+const mapStateToProps = ({ portofolioReducers }) => {
+  return {
+    activeTab: portofolioReducers.activeTab
+  };
+};
+
+export default connect(mapStateToProps)(PortofolioListSection);
