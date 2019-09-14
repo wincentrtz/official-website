@@ -26,8 +26,7 @@ const ScrollableContainer = ({
   };
 
   const isUseOnePageScroll = yAxis =>
-    !isScrolling &&
-    (currentPage !== EXPERIENCE_PAGE || !isOnExperienceCardScroll(yAxis));
+    !isScrolling && !isOnExperienceCardScroll(yAxis);
 
   const isOnExperienceCardScroll = yAxis =>
     verticalPositionByPercentage(yAxis) >= 40 &&

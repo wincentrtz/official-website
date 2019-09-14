@@ -10,7 +10,7 @@ const getMyFacts = {
   method: METHODS.GET,
   data: [
     {
-      title: "Book Readed",
+      title: "Book Read",
       description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, repellendus eveniet."
     },

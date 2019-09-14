@@ -15,10 +15,10 @@ import {
 } from "./style";
 
 const PAGE = [
-  <PortofolioPage />,
   <HomePage />,
   <AboutPage />,
-  <ExperiencePage />
+  <ExperiencePage />,
+  <PortofolioPage />
 ];
 
 const App = () => (

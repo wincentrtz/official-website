@@ -8,12 +8,21 @@ export const CardWrapper = styled.div`
   border-radius: 10px;
   height: 40vh;
   cursor: all-scroll;
+  @media (max-width: 768px) {
+    width: 200px;
+    height: 35vh;
+  }
 `;
 
 export const CardHeader = styled.div`
   background-color: white;
   border-radius: 10px 10px 0px 0px;
   height: 18vh;
+  display: flex;
+  justify-content: center;
+  @media (max-width: 768px) {
+    height: 12vh;
+  }
 `;
 
 export const CardImage = styled.img`
@@ -27,8 +36,14 @@ export const CardBody = styled.div`
 
 export const CardTitle = styled.h4`
   color: ${COLOR.FONT_PRIMARY};
+  @media (max-width: 768px) {
+    font-size: 0.8em;
+  }
 `;
 
 export const CardDescription = styled.p`
   font-size: 0.7em;
+  @media (max-width: 768px) {
+    font-size: 0.6em;
+  }
 `;

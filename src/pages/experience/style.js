@@ -18,4 +18,9 @@ export const TitleSection = styled.h2`
   color: ${COLOR.FONT_PRIMARY};
 `;
 
-export const DescriptionSection = styled.p``;
+export const DescriptionSection = styled.p`
+  @media (max-width: 768px) {
+    font-size: 0.6em;
+    margin: 0 5vw;
+  }
+`;
