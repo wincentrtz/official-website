@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
+import { connect } from "react-redux";
 
+import { changeActivePortofolioTab } from "store/portofolio/actions";
 import { TabsContainer, TabButton } from "./style";
 
 const TABS = [
@@ -17,14 +19,13 @@ const TABS = [
   }
 ];
 
-const PortofolioTabs = () => {
-  const [active, setActive] = useState("MOBILE");
-
+const PortofolioTabs = ({ activeTab, handleChangeActivePortofolioTab }) => {
   const renderTabs = () =>
     TABS.map(tab => (
       <TabButton
-        active={tab.code === active}
-        onClick={() => setActive(tab.code)}
+        active={tab.code === activeTab}
+        onClick={() => handleChangeActivePortofolioTab(tab.code)}
+        key={tab.code}
       >
         {tab.label}
       </TabButton>
@@ -33,4 +34,20 @@ const PortofolioTabs = () => {
   return <TabsContainer>{renderTabs()}</TabsContainer>;
 };
 
-export default PortofolioTabs;
+const mapStateToProps = ({ portofolioReducers }) => {
+  return {
+    activeTab: portofolioReducers.activeTab
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    handleChangeActivePortofolioTab: code =>
+      dispatch(changeActivePortofolioTab(code))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PortofolioTabs);

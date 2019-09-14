@@ -3,14 +3,14 @@ import COLOR from "constants/apps/colors";
 
 export const PortofolioContentContainer = styled.div`
   display: flex;
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
 `;
 
 export const ContentContainer = styled.div`
   visibility: ${props => (props.isVisible ? "visible" : "hidden")};
-  display: ${props => (props.isVisible ? "block" : "none")};
+  display: ${props => (props.isVisible ? "flex" : "none")};
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 export const ImageSection = styled.div`

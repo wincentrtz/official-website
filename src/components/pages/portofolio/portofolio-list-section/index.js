@@ -59,7 +59,7 @@ const portfolioContent = title => (
 
 const renderCategories = () =>
   CATEGORIES.map(category => (
-    <PortofolioCategoryTab>{category}</PortofolioCategoryTab>
+    <PortofolioCategoryTab key={category}>{category}</PortofolioCategoryTab>
   ));
 
 export default PortofolioListSection;
