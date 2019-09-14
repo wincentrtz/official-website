@@ -15,9 +15,9 @@ import {
 } from "./style";
 
 const PAGE = [
+  <PortofolioPage />,
   <HomePage />,
   <AboutPage />,
-  <PortofolioPage />,
   <ExperiencePage />
 ];
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 import {
   PortofolioContentContainer,
@@ -7,16 +7,39 @@ import {
   PortofolioTitle,
   PortofolioDescription,
   PortofolioButton,
-  PortofolioCategoryTab
+  PortofolioCategoryTab,
+  ContentContainer
 } from "./style";
 
 const CATEGORIES = ["java", "firebase"];
 
+const ActiveContent = "MOBILE";
+
 const PortofolioListSection = () => (
   <PortofolioContentContainer>
+    {renderPortfolioContent()}
+  </PortofolioContentContainer>
+);
+
+const renderPortfolioContent = () => (
+  <Fragment>
+    <ContentContainer isVisible={ActiveContent === "MOBILE"}>
+      {portfolioContent("Mobile")}
+    </ContentContainer>
+    <ContentContainer isVisible={ActiveContent === "WEB"}>
+      {portfolioContent("Web")}
+    </ContentContainer>
+    <ContentContainer isVisible={ActiveContent === "COMPETITION"}>
+      {portfolioContent("Competition")}
+    </ContentContainer>
+  </Fragment>
+);
+
+const portfolioContent = title => (
+  <Fragment>
     <ImageSection>Image Disini</ImageSection>
     <ContentSection>
-      <PortofolioTitle>Mobile Application for bla bla bla</PortofolioTitle>
+      <PortofolioTitle>{title} Application for bla bla bla</PortofolioTitle>
       {renderCategories()}
       <PortofolioDescription>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium,
@@ -31,7 +54,7 @@ const PortofolioListSection = () => (
       </PortofolioDescription>
       <PortofolioButton>Learn More</PortofolioButton>
     </ContentSection>
-  </PortofolioContentContainer>
+  </Fragment>
 );
 
 const renderCategories = () =>

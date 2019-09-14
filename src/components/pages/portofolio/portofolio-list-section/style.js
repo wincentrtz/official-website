@@ -8,6 +8,11 @@ export const PortofolioContentContainer = styled.div`
   }
 `;
 
+export const ContentContainer = styled.div`
+  visibility: ${props => (props.isVisible ? "visible" : "hidden")};
+  display: ${props => (props.isVisible ? "block" : "none")};
+`;
+
 export const ImageSection = styled.div`
   margin: 4vh 4vw;
   flex: 9;
