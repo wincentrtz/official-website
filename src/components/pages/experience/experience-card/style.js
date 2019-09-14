@@ -26,7 +26,10 @@ export const CardHeader = styled.div`
 `;
 
 export const CardImage = styled.img`
-  width: 50%;
+  width: 65%;
+  @media (max-width: 768px) {
+    height: 60%;
+  }
 `;
 
 export const CardBody = styled.div`
