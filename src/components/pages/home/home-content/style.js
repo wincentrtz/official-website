@@ -18,6 +18,9 @@ export const DescriptionSection = styled.p`
   color: ${COLOR.FONT_SECONDARY};
   margin-bottom: 60px;
   font-size: 0.9em;
+  @media (max-width: 768px) {
+    font-size: 0.8em;
+  }
 `;
 export const DownloadButton = styled.button`
   background-color: ${COLOR.FONT_PRIMARY};

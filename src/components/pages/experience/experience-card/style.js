@@ -20,6 +20,7 @@ export const CardHeader = styled.div`
   height: 18vh;
   display: flex;
   justify-content: center;
+  align-items: center;
   @media (max-width: 768px) {
     height: 12vh;
   }
@@ -28,7 +29,7 @@ export const CardHeader = styled.div`
 export const CardImage = styled.img`
   width: 65%;
   @media (max-width: 768px) {
-    height: 60%;
+    width: 50%;
   }
 `;
 
