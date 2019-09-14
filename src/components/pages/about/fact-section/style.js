@@ -47,6 +47,8 @@ export const CardFact = styled.div`
   }
 `;
 
+export const CardImage = styled.img``;
+
 export const CardTitle = styled.div`
   color: ${COLOR.FONT_SECONDARY};
 `;

@@ -11,7 +11,7 @@ const getBooks = {
   data: [
     {
       id: 1,
-      title: "Book Readed",
+      title: "Book Read",
       author: "Mark Manson",
       releasedYear: 2018,
       imgUrl:
@@ -19,7 +19,7 @@ const getBooks = {
     },
     {
       id: 2,
-      title: "Book Readed",
+      title: "Book Read",
       author: "Mark Manson",
       releasedYear: 2018,
       imgUrl:
@@ -27,7 +27,7 @@ const getBooks = {
     },
     {
       id: 3,
-      title: "Book Readed",
+      title: "Book Read",
       author: "Mark Manson",
       releasedYear: 2018,
       imgUrl:
@@ -35,7 +35,7 @@ const getBooks = {
     },
     {
       id: 4,
-      title: "Book Readed",
+      title: "Book Read",
       author: "Mark Manson",
       releasedYear: 2018,
       imgUrl:

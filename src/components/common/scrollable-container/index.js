@@ -7,7 +7,7 @@ import { MainContainer } from "./style";
 const ONE_PAGE_HEIGHT_PROPERTY = document.documentElement.scrollHeight;
 const DOWN = "DOWN";
 const UP = "UP";
-const EXPERIENCE_PAGE = 2;
+const EXPERIENCE_PAGE = 3;
 
 const ScrollableContainer = ({
   children,
@@ -26,8 +26,7 @@ const ScrollableContainer = ({
   };
 
   const isUseOnePageScroll = yAxis =>
-    !isScrolling &&
-    (currentPage !== EXPERIENCE_PAGE || !isOnExperienceCardScroll(yAxis));
+    !isScrolling && !isOnExperienceCardScroll(yAxis);
 
   const isOnExperienceCardScroll = yAxis =>
     verticalPositionByPercentage(yAxis) >= 40 &&

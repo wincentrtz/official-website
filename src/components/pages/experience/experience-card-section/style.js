@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import COLOR from "constants/apps/colors";
 
 export const ExperienceCardContainer = styled.div`
   width: 75vw;
@@ -8,9 +7,6 @@ export const ExperienceCardContainer = styled.div`
   flex: 1;
   @media (max-width: 1024px) {
     width: 80vw;
-  }
-  @media (max-width: 768px) {
-    width: 90vw;
   }
 `;
 

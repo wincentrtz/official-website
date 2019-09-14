@@ -1,0 +1,1 @@
+export const CHANGE_ACTIVE_PORTOFOLIO_TAB = "GO_TO_PAGE";

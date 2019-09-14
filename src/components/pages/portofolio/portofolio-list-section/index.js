@@ -1,4 +1,5 @@
-import React from "react";
+import React, { Fragment } from "react";
+import { connect } from "react-redux";
 
 import {
   PortofolioContentContainer,
@@ -7,16 +8,37 @@ import {
   PortofolioTitle,
   PortofolioDescription,
   PortofolioButton,
-  PortofolioCategoryTab
+  PortofolioCategoryTab,
+  ContentContainer
 } from "./style";
 
 const CATEGORIES = ["java", "firebase"];
 
-const PortofolioListSection = () => (
+const PortofolioListSection = ({ activeTab }) => (
   <PortofolioContentContainer>
+    {renderPortfolioContent(activeTab)}
+  </PortofolioContentContainer>
+);
+
+const renderPortfolioContent = activeTab => (
+  <Fragment>
+    <ContentContainer isVisible={activeTab === "MOBILE"}>
+      {portfolioContent("Mobile")}
+    </ContentContainer>
+    <ContentContainer isVisible={activeTab === "WEB"}>
+      {portfolioContent("Web")}
+    </ContentContainer>
+    <ContentContainer isVisible={activeTab === "COMPETITION"}>
+      {portfolioContent("Competition")}
+    </ContentContainer>
+  </Fragment>
+);
+
+const portfolioContent = title => (
+  <Fragment>
     <ImageSection>Image Disini</ImageSection>
     <ContentSection>
-      <PortofolioTitle>Mobile Application for bla bla bla</PortofolioTitle>
+      <PortofolioTitle>{title} Application for bla bla bla</PortofolioTitle>
       {renderCategories()}
       <PortofolioDescription>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium,
@@ -31,12 +53,18 @@ const PortofolioListSection = () => (
       </PortofolioDescription>
       <PortofolioButton>Learn More</PortofolioButton>
     </ContentSection>
-  </PortofolioContentContainer>
+  </Fragment>
 );
 
 const renderCategories = () =>
   CATEGORIES.map(category => (
-    <PortofolioCategoryTab>{category}</PortofolioCategoryTab>
+    <PortofolioCategoryTab key={category}>{category}</PortofolioCategoryTab>
   ));
 
-export default PortofolioListSection;
+const mapStateToProps = ({ portofolioReducers }) => {
+  return {
+    activeTab: portofolioReducers.activeTab
+  };
+};
+
+export default connect(mapStateToProps)(PortofolioListSection);
