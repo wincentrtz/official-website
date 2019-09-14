@@ -9,14 +9,19 @@ export const NavbarContainer = styled.div`
   width: 92vw;
   z-index: 999;
 `;
-export const NavbarLeftSection = styled.div``;
+export const NavbarLeftSection = styled.img`
+  @media (max-width: 768px) {
+    width: 30vw;
+  }
+`;
 export const NavbarRightSection = styled.div`
   display: flex;
 `;
-export const NavbarItem = styled.div`
+export const NavbarItem = styled.img`
   padding: 10px;
   margin-left: ${props => props.marginLeft}px;
   @media (max-width: 768px) {
     margin-left: 0px;
+    width: 7vw;
   }
 `;

@@ -16,23 +16,19 @@ import OpenMenu from "assets/images/menu-open.svg";
 
 const Navbar = ({ toggleSidebarMenu, isSidebarActive }) => {
   const renderSidebarToggleIcon = () =>
-    isSidebarActive ? <img src={ClosedMenu} /> : <img src={OpenMenu} />;
+    isSidebarActive ? ClosedMenu : OpenMenu;
 
   return (
     <NavbarContainer>
-      <NavbarLeftSection>
-        <img src={Logo} />
-      </NavbarLeftSection>
+      <NavbarLeftSection src={Logo} />
       <NavbarRightSection>
-        <NavbarItem>
-          <img src={Facebook} />
-        </NavbarItem>
-        <NavbarItem>
-          <img src={LinkedIn} />
-        </NavbarItem>
-        <NavbarItem marginLeft={60} onClick={toggleSidebarMenu}>
-          {renderSidebarToggleIcon()}
-        </NavbarItem>
+        <NavbarItem src={Facebook} />
+        <NavbarItem src={LinkedIn} />
+        <NavbarItem
+          marginLeft={60}
+          onClick={toggleSidebarMenu}
+          src={renderSidebarToggleIcon()}
+        />
       </NavbarRightSection>
     </NavbarContainer>
   );

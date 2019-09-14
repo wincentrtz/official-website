@@ -43,6 +43,11 @@ export const PortofolioCategoryTab = styled.div`
   margin-right: 10px;
   font-size: 0.9em;
   margin-bottom: 10px;
+  @media (max-width: 768px) {
+    font-size: 0.6em;
+    padding: 2px 15px;
+    border-width: 1px;
+  }
 `;
 
 export const PortofolioDescription = styled.p`
@@ -62,6 +67,6 @@ export const PortofolioButton = styled.button`
   border-radius: 5px;
   margin-top: 10px;
   @media (max-width: 768px) {
-    font-size: 1em;
+    font-size: 0.8em;
   }
 `;

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import COLOR from "constants/apps/colors";
 
 export const ExperienceCardContainer = styled.div`
   width: 75vw;

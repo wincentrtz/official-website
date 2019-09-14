@@ -11,7 +11,8 @@ import {
   CardContainer,
   CardFact,
   CardTitle,
-  CardDescription
+  CardDescription,
+  CardImage
 } from "./style";
 import BookIcon from "assets/images/book.svg";
 import Coffee from "assets/images/coffee.svg";
@@ -19,8 +20,8 @@ import Github from "assets/images/github.svg";
 import ProgrammingLanguage from "assets/images/programming-language.svg";
 
 const FACTS = {
-  "Book Readed": {
-    title: "Book Readed",
+  "Book Read": {
+    title: "Book Read",
     content: <BookPage />,
     icon: BookIcon
   },
@@ -65,7 +66,7 @@ class FactSection extends Component {
   renderFact = () =>
     this.props.facts.map(f => (
       <CardFact key={f.title} onClick={() => this.handleCardModal(f.title)}>
-        <img src={FACTS[f.title].icon} />
+        <CardImage src={FACTS[f.title].icon} />
         <CardTitle>{f.title}</CardTitle>
         <CardDescription>{f.description}</CardDescription>
       </CardFact>
