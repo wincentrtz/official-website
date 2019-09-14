@@ -14,11 +14,13 @@ import {
 
 const CATEGORIES = ["java", "firebase"];
 
-const PortofolioListSection = ({ activeTab }) => (
-  <PortofolioContentContainer>
-    {renderPortfolioContent(activeTab)}
-  </PortofolioContentContainer>
-);
+const PortofolioListSection = ({ activeTab }) => {
+  return (
+    <PortofolioContentContainer>
+      {renderPortfolioContent(activeTab)}
+    </PortofolioContentContainer>
+  );
+};
 
 const renderPortfolioContent = activeTab => (
   <Fragment>
