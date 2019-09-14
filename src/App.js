@@ -14,7 +14,12 @@ import {
   PageContent
 } from "./style";
 
-const PAGE = [<HomePage />, <AboutPage />, <ExperiencePage />];
+const PAGE = [
+  <HomePage />,
+  <AboutPage />,
+  <PortofolioPage />,
+  <ExperiencePage />
+];
 
 const App = () => (
   <Fragment>

@@ -4,10 +4,14 @@ import COLOR from "constants/apps/colors";
 export const TabsContainer = styled.div`
   display: flex;
   justify-content: center;
+  width: 100%;
 `;
 
 export const TabButton = styled.div`
   color: ${props => (props.active ? COLOR.FONT_PRIMARY : "white")}
-  padding: 40px;
+  padding: 2vw;
   cursor: pointer;
+  @media (max-width: 768px) {
+    font-size: 0.7em;
+  }
 `;

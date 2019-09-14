@@ -3,11 +3,17 @@ import COLOR from "constants/apps/colors";
 
 export const PortofolioContentContainer = styled.div`
   display: flex;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 export const ImageSection = styled.div`
   margin: 4vh 4vw;
   flex: 9;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const ContentSection = styled.div`
@@ -18,6 +24,9 @@ export const ContentSection = styled.div`
 
 export const PortofolioTitle = styled.h2`
   color: ${COLOR.FONT_PRIMARY};
+  @media (max-width: 768px) {
+    font-size: 1em;
+  }
 `;
 
 export const PortofolioCategoryTab = styled.div`
@@ -28,11 +37,15 @@ export const PortofolioCategoryTab = styled.div`
   padding: 0px 20px;
   margin-right: 10px;
   font-size: 0.9em;
+  margin-bottom: 10px;
 `;
 
 export const PortofolioDescription = styled.p`
   color: ${COLOR.FONT_SECONDARY};
   font-size: 0.9em;
+  @media (max-width: 768px) {
+    font-size: 0.6em;
+  }
 `;
 
 export const PortofolioButton = styled.button`
@@ -40,6 +53,10 @@ export const PortofolioButton = styled.button`
   color: ${COLOR.PRIMARY};
   font-weight: bold;
   border: none;
-  padding: 10px 40px;
+  padding: 1vw 4vw;
   border-radius: 5px;
+  margin-top: 10px;
+  @media (max-width: 768px) {
+    font-size: 1em;
+  }
 `;

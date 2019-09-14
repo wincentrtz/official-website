@@ -17,7 +17,7 @@ export const CardHeader = styled.div`
 `;
 
 export const CardImage = styled.img`
-  width: 65%;
+  width: 50%;
 `;
 
 export const CardBody = styled.div`
