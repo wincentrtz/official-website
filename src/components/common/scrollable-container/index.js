@@ -1,8 +1,7 @@
-import React from "react";
-import { connect } from "react-redux";
+import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
 
-import { moveToNextPage, moveToPreviousPage } from "store/page/actions";
+import PAGES from "constants/apps/pages";
 import { MainContainer } from "./style";
 
 const ONE_PAGE_HEIGHT_PROPERTY = document.documentElement.scrollHeight;
@@ -10,21 +9,20 @@ const ONE_PAGE_WIDTH_PROPERTY = document.documentElement.scrollWidth;
 const DOWN = "DOWN";
 const UP = "UP";
 
-const ScrollableContainer = ({
-  children,
-  currentPage,
-  isScrolling,
-  moveToPreviousPage,
-  moveToNextPage,
-  history
-}) => {
-  const scrollHeight = currentPage * -ONE_PAGE_HEIGHT_PROPERTY;
+const ScrollableContainer = ({ children, location, history }) => {
+  const [isScrolling, setIsScrolling] = useState(false);
+  const pathname = location.pathname.substring(1);
+  const page = PAGES[pathname];
+  const scrollHeight = page.pageNumber * -ONE_PAGE_HEIGHT_PROPERTY;
 
   const scrollPage = ({ clientX, clientY, deltaY }) => {
     if (isUseOnePageScroll(clientX, clientY)) {
+      setIsScrolling(true);
       const direction = deltaY < 0 ? UP : DOWN;
-      updateCurrentPage(direction);
-      history.push({});
+      hanleUpdateCurrentPage(direction, page);
+      setTimeout(() => {
+        setIsScrolling(false);
+      }, 2000);
     }
   };
 
@@ -43,9 +41,12 @@ const ScrollableContainer = ({
   const verticalPositionByPercentage = yAxis =>
     ((yAxis % ONE_PAGE_HEIGHT_PROPERTY) * 100) / ONE_PAGE_HEIGHT_PROPERTY;
 
-  const updateCurrentPage = direction => {
-    if (direction === UP) moveToPreviousPage();
-    else moveToNextPage();
+  const hanleUpdateCurrentPage = (direction, page) => {
+    if (direction === UP && page.pageNumber !== 0) {
+      history.push({ pathname: page.prevPage });
+    } else if (direction === DOWN && page.pageNumber !== 4) {
+      history.push({ pathname: page.nextPage });
+    }
   };
 
   return (
@@ -55,22 +56,4 @@ const ScrollableContainer = ({
   );
 };
 
-const mapStateToProps = ({ pageReducers }) => {
-  const { currentPage, isScrolling } = pageReducers;
-  return {
-    currentPage,
-    isScrolling
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    moveToNextPage: () => dispatch(moveToNextPage()),
-    moveToPreviousPage: () => dispatch(moveToPreviousPage())
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withRouter(ScrollableContainer));
+export default withRouter(ScrollableContainer);

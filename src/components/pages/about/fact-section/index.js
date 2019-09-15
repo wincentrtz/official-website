@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import queryString from "query-string";
 
 import { fetchAllFacts } from "store/fact/actions";
+import PAGES from "constants/apps/pages";
 import BookPage from "pages/book";
 import Modal from "components/common/modal";
 import {
@@ -51,7 +52,9 @@ class FactSection extends Component {
 
   componentDidUpdate = () => {
     const { isCalled } = this.state;
-    const { fetchAllFacts, currentPage } = this.props;
+    const { fetchAllFacts, location } = this.props;
+    const pathname = location.pathname.substring(1);
+    const currentPage = PAGES[pathname].pageNumber;
     if (currentPage === 1 && !isCalled) {
       fetchAllFacts().then(() => this.setState({ isCalled: true }));
     }
@@ -90,10 +93,9 @@ class FactSection extends Component {
   }
 }
 
-const mapStateToProps = ({ factReducers, pageReducers }) => {
+const mapStateToProps = ({ factReducers }) => {
   return {
-    facts: factReducers.facts,
-    currentPage: pageReducers.currentPage
+    facts: factReducers.facts
   };
 };
 

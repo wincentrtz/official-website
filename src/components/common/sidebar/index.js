@@ -1,18 +1,21 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { toggleSidebarMenu } from "store/sidebar/actions";
-import { goToPage } from "store/page/actions";
+import PAGES from "constants/apps/pages";
 import { SidebarItem, SidebarItemNoValue } from "./style";
 
-const SIDEBAR_LIST = ["Home", "About", "Portfolio", "Resume", "Contact"];
+const SIDEBAR_LIST = ["Home", "About", "Portofolio", "Experience", "Contact"];
 
-const Sidebar = ({ isSidebarActive, currentPage, goToPage }) => {
+const Sidebar = ({ isSidebarActive, history, location }) => {
+  const pathname = location.pathname.substring(1);
+  const currentPage = PAGES[pathname].pageNumber;
   const renderSidebarItem = () =>
     SIDEBAR_LIST.map((item, index) =>
       isSidebarActive ? (
         <SidebarItem
-          onClick={() => goToPage(index)}
+          onClick={() => handleGoToPage(index)}
           isActive={index === currentPage}
           key={item}
         >
@@ -20,30 +23,32 @@ const Sidebar = ({ isSidebarActive, currentPage, goToPage }) => {
         </SidebarItem>
       ) : (
         <SidebarItemNoValue
-          onClick={() => goToPage(index)}
+          onClick={() => handleGoToPage(index)}
           isActive={index === currentPage}
           key={item}
         />
       )
     );
+
+  const handleGoToPage = index => {
+    history.push({ pathname: SIDEBAR_LIST[index].toLowerCase() });
+  };
   return renderSidebarItem();
 };
 
-const mapStateToProps = ({ sidebarReducers, pageReducers }) => {
+const mapStateToProps = ({ sidebarReducers }) => {
   return {
-    isSidebarActive: sidebarReducers.status,
-    currentPage: pageReducers.currentPage
+    isSidebarActive: sidebarReducers.status
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    toggleSidebarMenu: () => dispatch(toggleSidebarMenu()),
-    goToPage: page => dispatch(goToPage(page))
+    toggleSidebarMenu: () => dispatch(toggleSidebarMenu())
   };
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Sidebar);
+)(withRouter(Sidebar));
