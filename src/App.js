@@ -26,9 +26,7 @@ const App = () => (
     <GlobalStyle />
     <Navbar />
     <ScrollableContainer>{renderPage()}</ScrollableContainer>
-    <SidebarContainer>
-      <Sidebar />
-    </SidebarContainer>
+    <Sidebar />
   </Fragment>
 );
 

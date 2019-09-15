@@ -4,7 +4,12 @@ import { connect } from "react-redux";
 
 import { toggleSidebarMenu } from "store/sidebar/actions";
 import PAGES from "constants/apps/pages";
-import { SidebarItem, SidebarItemNoValue } from "./style";
+import {
+  SidebarItem,
+  SidebarItemLineOnly,
+  SidebarContainer,
+  SidebarLineOnlyWrapper
+} from "./style";
 
 const Sidebar = ({ isSidebarActive, history, location }) => {
   const pathname = location.pathname.substring(1);
@@ -21,18 +26,19 @@ const Sidebar = ({ isSidebarActive, history, location }) => {
           {item}
         </SidebarItem>
       ) : (
-        <SidebarItemNoValue
-          onClick={() => handleGoToPage(index)}
-          isActive={index === currentPage}
+        <SidebarLineOnlyWrapper
           key={item}
-        />
+          onClick={() => handleGoToPage(index)}
+        >
+          <SidebarItemLineOnly isActive={index === currentPage} />
+        </SidebarLineOnlyWrapper>
       )
     );
 
   const handleGoToPage = index => {
     history.push({ pathname: sidebarList[index] });
   };
-  return renderSidebarItem();
+  return <SidebarContainer>{renderSidebarItem()}</SidebarContainer>;
 };
 
 const mapStateToProps = ({ sidebarReducers }) => {
