@@ -6,13 +6,12 @@ import { toggleSidebarMenu } from "store/sidebar/actions";
 import PAGES from "constants/apps/pages";
 import { SidebarItem, SidebarItemNoValue } from "./style";
 
-const SIDEBAR_LIST = ["Home", "About", "Portofolio", "Experience", "Contact"];
-
 const Sidebar = ({ isSidebarActive, history, location }) => {
   const pathname = location.pathname.substring(1);
   const currentPage = PAGES[pathname].pageNumber;
+  const sidebarList = Object.keys(PAGES);
   const renderSidebarItem = () =>
-    SIDEBAR_LIST.map((item, index) =>
+    sidebarList.map((item, index) =>
       isSidebarActive ? (
         <SidebarItem
           onClick={() => handleGoToPage(index)}
@@ -31,7 +30,7 @@ const Sidebar = ({ isSidebarActive, history, location }) => {
     );
 
   const handleGoToPage = index => {
-    history.push({ pathname: SIDEBAR_LIST[index].toLowerCase() });
+    history.push({ pathname: sidebarList[index] });
   };
   return renderSidebarItem();
 };

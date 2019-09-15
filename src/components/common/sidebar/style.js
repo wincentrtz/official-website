@@ -8,6 +8,7 @@ export const SidebarItem = styled.div`
   margin: 30px 0;
   text-align: right;
   transition: color 1s ease;
+  text-transform:capitalize;
 `;
 
 export const SidebarItemNoValue = styled.div`

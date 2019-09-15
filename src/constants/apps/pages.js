@@ -8,18 +8,18 @@ export default {
     prevPage: "home",
     nextPage: "experience"
   },
-  experience: {
+  portofolio: {
     pageNumber: 2,
     prevPage: "about",
-    nextPage: "portofolio"
+    nextPage: "experience"
   },
-  portofolio: {
+  experience: {
     pageNumber: 3,
-    prevPage: "experience",
+    prevPage: "portofolio",
     nextPage: "contact"
   },
   contact: {
     pageNumber: 4,
-    prevPage: "portofolio"
+    prevPage: "experience"
   }
 };
