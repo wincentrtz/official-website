@@ -6,18 +6,26 @@ import {
 } from "./constants";
 import sidebarState from "./state";
 
+const START_PAGE = 0;
+const LAST_PAGE = 4;
+
 const pageReducers = (state = sidebarState, action) => {
   switch (action.type) {
     case MOVE_TO_NEXT_PAGE:
       return {
         ...state,
-        currentPage: ++state.currentPage
+        currentPage:
+          state.currentPage !== LAST_PAGE
+            ? ++state.currentPage
+            : state.currentPage
       };
     case MOVE_TO_PREVIOUS_PAGE:
       return {
         ...state,
         currentPage:
-          state.currentPage !== 0 ? --state.currentPage : state.currentPage
+          state.currentPage !== START_PAGE
+            ? --state.currentPage
+            : state.currentPage
       };
     case CHANGE_SCROLL_STATUS:
       const isScrolling = !state.isScrolling;
