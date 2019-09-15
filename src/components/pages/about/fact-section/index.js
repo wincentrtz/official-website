@@ -72,8 +72,8 @@ class FactSection extends Component {
 
   render() {
     const { search } = this.props.location;
-    const isOpen = !!search;
     const activeCard = queryString.parse(search).fact;
+    const isOpen = !!activeCard;
     return (
       <FactContainer>
         <TitleSection>Facts About Me</TitleSection>

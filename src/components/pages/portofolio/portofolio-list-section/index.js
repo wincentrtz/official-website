@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
-import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import queryString from "query-string";
 
 import {
   PortofolioContentContainer,
@@ -14,7 +15,9 @@ import {
 
 const CATEGORIES = ["java", "firebase"];
 
-const PortofolioListSection = ({ activeTab }) => {
+const PortofolioListSection = ({ location }) => {
+  const { search } = location;
+  const activeTab = queryString.parse(search).currentPortofolio || "MOBILE";
   return (
     <PortofolioContentContainer>
       {renderPortfolioContent(activeTab)}
@@ -63,10 +66,4 @@ const renderCategories = () =>
     <PortofolioCategoryTab key={category}>{category}</PortofolioCategoryTab>
   ));
 
-const mapStateToProps = ({ portofolioReducers }) => {
-  return {
-    activeTab: portofolioReducers.activeTab
-  };
-};
-
-export default connect(mapStateToProps)(PortofolioListSection);
+export default withRouter(PortofolioListSection);

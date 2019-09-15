@@ -1,7 +1,7 @@
 import React from "react";
-import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import queryString from "query-string";
 
-import { changeActivePortofolioTab } from "store/portofolio/actions";
 import { TabsContainer, TabButton } from "./style";
 
 const TABS = [
@@ -19,7 +19,10 @@ const TABS = [
   }
 ];
 
-const PortofolioTabs = ({ activeTab, handleChangeActivePortofolioTab }) => {
+const PortofolioTabs = ({ location, history }) => {
+  const { search } = location;
+  const activeTab = queryString.parse(search).currentPortofolio || "MOBILE";
+
   const renderTabs = () =>
     TABS.map(tab => (
       <TabButton
@@ -31,23 +34,11 @@ const PortofolioTabs = ({ activeTab, handleChangeActivePortofolioTab }) => {
       </TabButton>
     ));
 
+  const handleChangeActivePortofolioTab = code => {
+    history.push({ search: `currentPortofolio=${code}` });
+  };
+
   return <TabsContainer>{renderTabs()}</TabsContainer>;
 };
 
-const mapStateToProps = ({ portofolioReducers }) => {
-  return {
-    activeTab: portofolioReducers.activeTab
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    handleChangeActivePortofolioTab: code =>
-      dispatch(changeActivePortofolioTab(code))
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PortofolioTabs);
+export default withRouter(PortofolioTabs);
