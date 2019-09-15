@@ -1,5 +1,7 @@
-import React, { Component, createRef } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import queryString from "query-string";
 
 import { fetchAllFacts } from "store/fact/actions";
 import BookPage from "pages/book";
@@ -44,11 +46,8 @@ const FACTS = {
 
 class FactSection extends Component {
   state = {
-    isCalled: false,
-    activeCard: null
+    isCalled: false
   };
-
-  child = createRef();
 
   componentDidUpdate = () => {
     const { isCalled } = this.state;
@@ -59,8 +58,7 @@ class FactSection extends Component {
   };
 
   handleCardModal = activeCard => {
-    this.child.current.handleOpenModal();
-    this.setState({ activeCard });
+    this.props.history.push({ search: `?fact=${activeCard}` });
   };
 
   renderFact = () =>
@@ -73,7 +71,9 @@ class FactSection extends Component {
     ));
 
   render() {
-    const { activeCard } = this.state;
+    const { search } = this.props.location;
+    const isOpen = !!search;
+    const activeCard = queryString.parse(search).fact;
     return (
       <FactContainer>
         <TitleSection>Facts About Me</TitleSection>
@@ -84,9 +84,7 @@ class FactSection extends Component {
           suscipit magnam eius soluta voluptatibus voluptatem molestiae.
         </DescriptionSection>
         <CardContainer>{this.renderFact()}</CardContainer>
-        <Modal ref={this.child}>
-          {activeCard && FACTS[activeCard].content}
-        </Modal>
+        <Modal isOpen={isOpen}>{activeCard && FACTS[activeCard].content}</Modal>
       </FactContainer>
     );
   }
@@ -108,4 +106,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(FactSection);
+)(withRouter(FactSection));

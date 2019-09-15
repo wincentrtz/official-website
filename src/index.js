@@ -12,7 +12,7 @@ require("mocks");
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <Route path="/" component={App} />
+      <Route path="" component={App} />
     </BrowserRouter>
   </Provider>,
   document.getElementById("root")
