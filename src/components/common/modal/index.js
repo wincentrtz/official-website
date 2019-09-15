@@ -1,15 +1,13 @@
 import React, { Component } from "react";
 import { createPortal } from "react-dom";
+import { withRouter } from "react-router-dom";
+
 import { ModalContainer, ModalContent } from "./style";
-import OutsideAlerter from "../../../utils/outside-alerter";
+import OutsideAlerter from "utils/outside-alerter";
 
 const modalRoot = document.getElementById("modal");
 
 class Modal extends Component {
-  state = {
-    isOpen: false
-  };
-
   element = document.createElement("div");
 
   componentDidMount() {
@@ -20,17 +18,12 @@ class Modal extends Component {
     modalRoot.removeChild(this.element);
   }
 
-  handleOpenModal = () => {
-    this.setState({ isOpen: true });
-  };
-
   handleCloseModal = () => {
-    this.setState({ isOpen: false });
+    this.props.history.push({});
   };
 
   render() {
-    const { isOpen } = this.state;
-    const { children } = this.props;
+    const { children, isOpen } = this.props;
     return createPortal(
       <ModalContainer isOpen={isOpen}>
         {isOpen && (
@@ -47,4 +40,4 @@ class Modal extends Component {
   }
 }
 
-export default Modal;
+export default withRouter(Modal);

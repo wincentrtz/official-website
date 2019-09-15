@@ -1,16 +1,12 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
-import userReducers from "./user/user-reducers";
 import sidebarReducers from "./sidebar/reducers";
-import pageReducers from "./page/reducers";
 import factReducers from "./fact/reducers";
 import bookReducers from "./book/reducers";
 import portofolioReducers from "./portofolio/reducers";
 
 const rootReducer = combineReducers({
-  userReducers,
   sidebarReducers,
-  pageReducers,
   factReducers,
   bookReducers,
   portofolioReducers

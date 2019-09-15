@@ -7,18 +7,13 @@ import HomePage from "pages/home";
 import AboutPage from "./pages/about";
 import ExperiencePage from "./pages/experience";
 import PortofolioPage from "./pages/portofolio";
-import {
-  GlobalStyle,
-  PageContainer,
-  SidebarContainer,
-  PageContent
-} from "./style";
+import { GlobalStyle, PageContainer, PageContent } from "./style";
 
 const PAGE = [
   <HomePage />,
   <AboutPage />,
-  <ExperiencePage />,
-  <PortofolioPage />
+  <PortofolioPage />,
+  <ExperiencePage />
 ];
 
 const App = () => (
@@ -26,9 +21,7 @@ const App = () => (
     <GlobalStyle />
     <Navbar />
     <ScrollableContainer>{renderPage()}</ScrollableContainer>
-    <SidebarContainer>
-      <Sidebar />
-    </SidebarContainer>
+    <Sidebar />
   </Fragment>
 );
 

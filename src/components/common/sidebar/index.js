@@ -1,49 +1,59 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { toggleSidebarMenu } from "store/sidebar/actions";
-import { goToPage } from "store/page/actions";
-import { SidebarItem, SidebarItemNoValue } from "./style";
+import PAGES from "constants/apps/pages";
+import {
+  SidebarItem,
+  SidebarItemLineOnly,
+  SidebarContainer,
+  SidebarLineOnlyWrapper
+} from "./style";
 
-const SIDEBAR_LIST = ["Home", "About", "Portfolio", "Resume", "Contact"];
-
-const Sidebar = ({ isSidebarActive, currentPage, goToPage }) => {
+const Sidebar = ({ isSidebarActive, history, location }) => {
+  const pathname = location.pathname.substring(1);
+  const page = PAGES[pathname] || PAGES["home"];
+  const sidebarList = Object.keys(PAGES);
   const renderSidebarItem = () =>
-    SIDEBAR_LIST.map((item, index) =>
+    sidebarList.map((item, index) =>
       isSidebarActive ? (
         <SidebarItem
-          onClick={() => goToPage(index)}
-          isActive={index === currentPage}
+          onClick={() => handleGoToPage(index)}
+          isActive={index === page.pageNumber}
           key={item}
         >
           {item}
         </SidebarItem>
       ) : (
-        <SidebarItemNoValue
-          onClick={() => goToPage(index)}
-          isActive={index === currentPage}
+        <SidebarLineOnlyWrapper
           key={item}
-        />
+          onClick={() => handleGoToPage(index)}
+        >
+          <SidebarItemLineOnly isActive={index === page.pageNumber} />
+        </SidebarLineOnlyWrapper>
       )
     );
-  return renderSidebarItem();
+
+  const handleGoToPage = index => {
+    history.push({ pathname: sidebarList[index] });
+  };
+  return <SidebarContainer>{renderSidebarItem()}</SidebarContainer>;
 };
 
-const mapStateToProps = ({ sidebarReducers, pageReducers }) => {
+const mapStateToProps = ({ sidebarReducers }) => {
   return {
-    isSidebarActive: sidebarReducers.status,
-    currentPage: pageReducers.currentPage
+    isSidebarActive: sidebarReducers.status
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    toggleSidebarMenu: () => dispatch(toggleSidebarMenu()),
-    goToPage: page => dispatch(goToPage(page))
+    toggleSidebarMenu: () => dispatch(toggleSidebarMenu())
   };
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Sidebar);
+)(withRouter(Sidebar));

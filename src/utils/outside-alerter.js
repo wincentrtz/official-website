@@ -1,11 +1,11 @@
 import React, { useRef, useEffect } from "react";
 
-function useOutsideAlerter(ref, handleCloseModal) {
-  function handleClickOutside(event) {
+const useOutsideAlerter = (ref, handleCloseModal) => {
+  const handleClickOutside = event => {
     if (ref.current && !ref.current.contains(event.target)) {
       handleCloseModal();
     }
-  }
+  };
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
@@ -13,7 +13,7 @@ function useOutsideAlerter(ref, handleCloseModal) {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   });
-}
+};
 
 const OutsideAlerter = ({ children, handleCloseModal }) => {
   const wrapperRef = useRef(null);

@@ -1,6 +1,6 @@
 import React from "react";
 
-import PortofolioTabs from "components/pages/portofolio/portofolio-tabs";
+import PortofolioTabsSection from "components/pages/portofolio/portofolio-tabs-section";
 import PortofolioListSection from "components/pages/portofolio/portofolio-list-section";
 import { TitleSection, DescriptionSection, PortofolioContainer } from "./style";
 
@@ -12,7 +12,7 @@ const PortofolioPage = () => (
       repellendus eveniet. Cumque necessitatibus, reprehenderit ratione aliquam
       alias repudiandae obcaecati.
     </DescriptionSection>
-    <PortofolioTabs />
+    <PortofolioTabsSection />
     <PortofolioListSection />
   </PortofolioContainer>
 );
