@@ -46,18 +46,8 @@ const FACTS = {
 };
 
 class FactSection extends Component {
-  state = {
-    isCalled: false
-  };
-
-  componentDidUpdate = () => {
-    const { isCalled } = this.state;
-    const { fetchAllFacts, location } = this.props;
-    const pathname = location.pathname.substring(1);
-    const currentPage = PAGES[pathname].pageNumber;
-    if (currentPage === 1 && !isCalled) {
-      fetchAllFacts().then(() => this.setState({ isCalled: true }));
-    }
+  componentDidMount = () => {
+    this.props.fetchAllFacts();
   };
 
   handleCardModal = activeCard => {

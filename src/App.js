@@ -12,8 +12,8 @@ import { GlobalStyle, PageContainer, PageContent } from "./style";
 const PAGE = [
   <HomePage />,
   <AboutPage />,
-  <ExperiencePage />,
-  <PortofolioPage />
+  <PortofolioPage />,
+  <ExperiencePage />
 ];
 
 const App = () => (

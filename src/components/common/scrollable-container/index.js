@@ -12,7 +12,7 @@ const UP = "UP";
 const ScrollableContainer = ({ children, location, history }) => {
   const [isScrolling, setIsScrolling] = useState(false);
   const pathname = location.pathname.substring(1);
-  const page = PAGES[pathname];
+  const page = PAGES[pathname] || PAGES["home"];
   const scrollHeight = page.pageNumber * -ONE_PAGE_HEIGHT_PROPERTY;
 
   const scrollPage = ({ clientX, clientY, deltaY }) => {

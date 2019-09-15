@@ -13,14 +13,14 @@ import {
 
 const Sidebar = ({ isSidebarActive, history, location }) => {
   const pathname = location.pathname.substring(1);
-  const currentPage = PAGES[pathname].pageNumber;
+  const page = PAGES[pathname] || PAGES["home"];
   const sidebarList = Object.keys(PAGES);
   const renderSidebarItem = () =>
     sidebarList.map((item, index) =>
       isSidebarActive ? (
         <SidebarItem
           onClick={() => handleGoToPage(index)}
-          isActive={index === currentPage}
+          isActive={index === page.pageNumber}
           key={item}
         >
           {item}
@@ -30,7 +30,7 @@ const Sidebar = ({ isSidebarActive, history, location }) => {
           key={item}
           onClick={() => handleGoToPage(index)}
         >
-          <SidebarItemLineOnly isActive={index === currentPage} />
+          <SidebarItemLineOnly isActive={index === page.pageNumber} />
         </SidebarLineOnlyWrapper>
       )
     );

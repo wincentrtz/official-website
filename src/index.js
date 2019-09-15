@@ -13,6 +13,7 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <Route path="/:page?" exact component={App} />
+      <Route path="/" render={() => <Redirect to="/home" />} />
     </BrowserRouter>
   </Provider>,
   document.getElementById("root")

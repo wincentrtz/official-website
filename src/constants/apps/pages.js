@@ -6,7 +6,7 @@ export default {
   about: {
     pageNumber: 1,
     prevPage: "home",
-    nextPage: "experience"
+    nextPage: "portofolio"
   },
   portofolio: {
     pageNumber: 2,
