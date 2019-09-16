@@ -8,12 +8,14 @@ import AboutPage from "./pages/about";
 import ExperiencePage from "./pages/experience";
 import PortofolioPage from "./pages/portofolio";
 import { GlobalStyle, PageContainer, PageContent } from "./style";
+import ContactPage from "./pages/contact";
 
 const PAGE = [
   <HomePage />,
   <AboutPage />,
   <PortofolioPage />,
-  <ExperiencePage />
+  <ExperiencePage />,
+  <ContactPage />
 ];
 
 const App = () => (
