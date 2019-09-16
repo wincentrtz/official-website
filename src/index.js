@@ -12,8 +12,8 @@ require("mocks");
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <Route path="/:page?" exact component={App} />
-      <Route path="/" render={() => <Redirect to="/home" />} />
+      <Route path="/:page" exact component={App} />
+      <Route path="/" exact render={() => <Redirect to="/home" />} />
     </BrowserRouter>
   </Provider>,
   document.getElementById("root")

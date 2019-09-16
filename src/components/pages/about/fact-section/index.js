@@ -1,10 +1,9 @@
-import React, { Component } from "react";
+import React, { useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import queryString from "query-string";
 
 import { fetchAllFacts } from "store/fact/actions";
-import PAGES from "constants/apps/pages";
 import BookPage from "pages/book";
 import Modal from "components/common/modal";
 import {
@@ -45,43 +44,46 @@ const FACTS = {
   }
 };
 
-class FactSection extends Component {
-  componentDidMount = () => {
-    this.props.fetchAllFacts();
+const FactSection = ({ handleFetchAllFacts, history, facts, location }) => {
+  const { search } = location;
+  const activeCard = queryString.parse(search).fact;
+  const isOpen = !!activeCard;
+  const mounted = useRef();
+
+  useEffect(() => {
+    if (!mounted.current) {
+      mounted.current = true;
+      handleFetchAllFacts();
+    }
+  }, [handleFetchAllFacts]);
+
+  const handleCardModal = activeCard => {
+    history.push({ search: `?fact=${activeCard}` });
   };
 
-  handleCardModal = activeCard => {
-    this.props.history.push({ search: `?fact=${activeCard}` });
-  };
-
-  renderFact = () =>
-    this.props.facts.map(f => (
-      <CardFact key={f.title} onClick={() => this.handleCardModal(f.title)}>
+  const renderFact = () =>
+    facts.map(f => (
+      <CardFact key={f.title} onClick={() => handleCardModal(f.title)}>
         <CardImage src={FACTS[f.title].icon} />
         <CardTitle>{f.title}</CardTitle>
         <CardDescription>{f.description}</CardDescription>
       </CardFact>
     ));
 
-  render() {
-    const { search } = this.props.location;
-    const activeCard = queryString.parse(search).fact;
-    const isOpen = !!activeCard;
-    return (
-      <FactContainer>
-        <TitleSection>Facts About Me</TitleSection>
-        <DescriptionSection>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium,
-          repellendus eveniet. Cumque necessitatibus, reprehenderit ratione
-          aliquam alias repudiandae obcaecati, fugiat sint repellat laboriosam
-          suscipit magnam eius soluta voluptatibus voluptatem molestiae.
-        </DescriptionSection>
-        <CardContainer>{this.renderFact()}</CardContainer>
-        <Modal isOpen={isOpen}>{activeCard && FACTS[activeCard].content}</Modal>
-      </FactContainer>
-    );
-  }
-}
+  return (
+    <FactContainer>
+      <TitleSection>Facts About Me</TitleSection>
+      <DescriptionSection>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium,
+        repellendus eveniet. Cumque necessitatibus, reprehenderit ratione
+        aliquam alias repudiandae obcaecati, fugiat sint repellat laboriosam
+        suscipit magnam eius soluta voluptatibus voluptatem molestiae.
+      </DescriptionSection>
+      <CardContainer>{renderFact()}</CardContainer>
+      <Modal isOpen={isOpen}>{activeCard && FACTS[activeCard].content}</Modal>
+    </FactContainer>
+  );
+};
 
 const mapStateToProps = ({ factReducers }) => {
   return {
@@ -91,7 +93,7 @@ const mapStateToProps = ({ factReducers }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchAllFacts: () => dispatch(fetchAllFacts())
+    handleFetchAllFacts: () => dispatch(fetchAllFacts())
   };
 };
 

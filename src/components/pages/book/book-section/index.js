@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import queryString from "query-string";
 
+import { fetchBooksByAlphabet } from "store/book/actions";
 import {
   BookContainer,
   BookCard,
@@ -12,7 +15,24 @@ import {
   BookDescription
 } from "./style";
 
-const BookSection = ({ books }) => {
+const BookSection = ({ books, handleFetchBooksByAlphabet, location }) => {
+  const { search } = location;
+  const alphabet = queryString.parse(search).activeAlphabet || "A";
+  const mounted = useRef();
+  const refAlpabet = useRef(alphabet);
+  const alphabetOptions = {
+    alphabet
+  };
+
+  useEffect(() => {
+    if (!mounted.current) {
+      mounted.current = true;
+      handleFetchBooksByAlphabet(alphabetOptions);
+    } else if (refAlpabet.current !== alphabet) {
+      handleFetchBooksByAlphabet(alphabetOptions);
+    }
+  }, [alphabet, alphabetOptions, handleFetchBooksByAlphabet]);
+
   const renderBookCards = () =>
     books.map(book => (
       <BookCard key={book.id}>
@@ -36,4 +56,14 @@ const mapStateToProps = ({ bookReducers }) => {
   };
 };
 
-export default connect(mapStateToProps)(BookSection);
+const mapDispatchToProps = dispatch => {
+  return {
+    handleFetchBooksByAlphabet: options =>
+      dispatch(fetchBooksByAlphabet(options))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(BookSection));

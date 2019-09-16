@@ -1,17 +1,18 @@
-import React, { useState, Fragment } from "react";
-import { connect } from "react-redux";
+import React, { Fragment } from "react";
+import { withRouter } from "react-router-dom";
+import queryString from "query-string";
 
-import { fetchBooksByAlphabet } from "store/book/actions";
 import { AlphabetTab, AlphabetContainer, AlphabetTabWrapper } from "./style";
 
-const AlphabetSection = ({ handleFetchBooksByAlphabet }) => {
-  const [activeAlphabet, setActiveAlphabet] = useState("A");
-
-  const options = { activeAlphabet };
+const AlphabetSection = ({ history, location }) => {
+  const { search } = location;
+  const activeAlphabet = queryString.parse(search).activeAlphabet || "A";
+  const previousQuery = queryString.parse(search).fact;
 
   const handleAlphabetTabClick = alphabet => {
-    setActiveAlphabet(alphabet);
-    handleFetchBooksByAlphabet(options);
+    history.push({
+      search: `fact=${previousQuery}&activeAlphabet=${alphabet}`
+    });
   };
 
   const renderAlphabets = () => (
@@ -45,14 +46,4 @@ const AlphabetSection = ({ handleFetchBooksByAlphabet }) => {
   return <AlphabetContainer>{renderAlphabets()}</AlphabetContainer>;
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    handleFetchBooksByAlphabet: options =>
-      dispatch(fetchBooksByAlphabet(options))
-  };
-};
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(AlphabetSection);
+export default withRouter(AlphabetSection);
