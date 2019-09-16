@@ -14,12 +14,13 @@ import {
   BookAuthor,
   BookDescription
 } from "./style";
+import { usePrevious } from "hooks";
 
 const BookSection = ({ books, handleFetchBooksByAlphabet, location }) => {
   const { search } = location;
   const alphabet = queryString.parse(search).activeAlphabet || "A";
+  const refAlphabet = usePrevious(alphabet);
   const mounted = useRef();
-  const refAlpabet = useRef(alphabet);
   const alphabetOptions = {
     alphabet
   };
@@ -28,10 +29,10 @@ const BookSection = ({ books, handleFetchBooksByAlphabet, location }) => {
     if (!mounted.current) {
       mounted.current = true;
       handleFetchBooksByAlphabet(alphabetOptions);
-    } else if (refAlpabet.current !== alphabet) {
+    } else if (refAlphabet.current !== alphabet) {
       handleFetchBooksByAlphabet(alphabetOptions);
     }
-  }, [alphabet, alphabetOptions, handleFetchBooksByAlphabet]);
+  }, [alphabet, handleFetchBooksByAlphabet]);
 
   const renderBookCards = () =>
     books.map(book => (

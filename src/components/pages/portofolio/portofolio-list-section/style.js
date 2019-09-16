@@ -39,7 +39,7 @@ export const PortofolioCategoryTab = styled.div`
   border-color: ${COLOR.FONT_PRIMARY};
   border-width: 2px;
   display: inline-block;
-  padding: 0px 20px;
+  padding: 5px 20px;
   margin-right: 10px;
   font-size: 0.9em;
   margin-bottom: 10px;
