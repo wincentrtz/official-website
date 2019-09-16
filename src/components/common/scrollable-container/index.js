@@ -42,11 +42,10 @@ const ScrollableContainer = ({ children, location, history }) => {
     ((yAxis % ONE_PAGE_HEIGHT_PROPERTY) * 100) / ONE_PAGE_HEIGHT_PROPERTY;
 
   const hanleUpdateCurrentPage = (direction, page) => {
-    if (direction === UP && page.pageNumber !== 0) {
+    if (direction === UP && page.pageNumber !== 0)
       history.push({ pathname: page.prevPage });
-    } else if (direction === DOWN && page.pageNumber !== 4) {
+    else if (direction === DOWN && page.pageNumber !== 4)
       history.push({ pathname: page.nextPage });
-    }
   };
 
   return (

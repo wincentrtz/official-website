@@ -4,7 +4,6 @@ import { withRouter } from "react-router-dom";
 import queryString from "query-string";
 
 import { fetchAllFacts } from "store/fact/actions";
-import PAGES from "constants/apps/pages";
 import BookPage from "pages/book";
 import Modal from "components/common/modal";
 import {

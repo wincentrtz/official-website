@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import queryString from "query-string";
 
+import { fetchBooksByAlphabet } from "store/book/actions";
 import {
   BookContainer,
   BookCard,
@@ -12,7 +15,18 @@ import {
   BookDescription
 } from "./style";
 
-const BookSection = ({ books }) => {
+const BookSection = ({ books, handleFetchBooksByAlphabet, location }) => {
+  const { search } = location;
+  const alphabet = queryString.parse(search).activeAlphabet || "A";
+
+  useEffect(() => {
+    handleFetchBooksByAlphabet(alphabetOptions);
+  }, alphabet);
+
+  const alphabetOptions = {
+    alphabet
+  };
+
   const renderBookCards = () =>
     books.map(book => (
       <BookCard key={book.id}>
@@ -36,4 +50,14 @@ const mapStateToProps = ({ bookReducers }) => {
   };
 };
 
-export default connect(mapStateToProps)(BookSection);
+const mapDispatchToProps = dispatch => {
+  return {
+    handleFetchBooksByAlphabet: options =>
+      dispatch(fetchBooksByAlphabet(options))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(BookSection));
