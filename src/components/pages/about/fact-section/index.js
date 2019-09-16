@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import queryString from "query-string";
@@ -44,14 +44,18 @@ const FACTS = {
   }
 };
 
-const FactSection = ({ fetchAllFacts, history, facts, location }) => {
+const FactSection = ({ handleFetchAllFacts, history, facts, location }) => {
   const { search } = location;
   const activeCard = queryString.parse(search).fact;
   const isOpen = !!activeCard;
+  const mounted = useRef();
 
   useEffect(() => {
-    fetchAllFacts();
-  }, []);
+    if (!mounted.current) {
+      mounted.current = true;
+      handleFetchAllFacts();
+    }
+  }, [handleFetchAllFacts]);
 
   const handleCardModal = activeCard => {
     history.push({ search: `?fact=${activeCard}` });
@@ -89,7 +93,7 @@ const mapStateToProps = ({ factReducers }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchAllFacts: () => dispatch(fetchAllFacts())
+    handleFetchAllFacts: () => dispatch(fetchAllFacts())
   };
 };
 

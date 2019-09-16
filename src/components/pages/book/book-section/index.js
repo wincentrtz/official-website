@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import queryString from "query-string";
@@ -18,14 +18,20 @@ import {
 const BookSection = ({ books, handleFetchBooksByAlphabet, location }) => {
   const { search } = location;
   const alphabet = queryString.parse(search).activeAlphabet || "A";
-
-  useEffect(() => {
-    handleFetchBooksByAlphabet(alphabetOptions);
-  }, alphabet);
-
+  const mounted = useRef();
+  const refAlpabet = useRef(alphabet);
   const alphabetOptions = {
     alphabet
   };
+
+  useEffect(() => {
+    if (!mounted.current) {
+      mounted.current = true;
+      handleFetchBooksByAlphabet(alphabetOptions);
+    } else if (refAlpabet.current !== alphabet) {
+      handleFetchBooksByAlphabet(alphabetOptions);
+    }
+  }, [alphabet, alphabetOptions, handleFetchBooksByAlphabet]);
 
   const renderBookCards = () =>
     books.map(book => (
