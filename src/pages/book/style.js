@@ -6,7 +6,8 @@ export const TitleSection = styled.h1`
 `;
 
 export const DescriptionSection = styled.p`
-  margin: 0 12vw;
+  margin: 0px 8vw;
+  padding: 0px 60px;
   margin-bottom: 40px;
   @media (max-width: 768px) {
     display: none;

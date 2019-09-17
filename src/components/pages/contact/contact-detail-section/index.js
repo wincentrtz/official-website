@@ -13,7 +13,9 @@ const CONTACT_LIST = [
 
 const ContactDetailSection = () => {
   const renderContactListItem = () =>
-    CONTACT_LIST.map(contact => <ContactList>{contact}</ContactList>);
+    CONTACT_LIST.map(contact => (
+      <ContactList key={contact}>{contact}</ContactList>
+    ));
   return (
     <ContactDetailContainer>
       <ContactListWrapper>{renderContactListItem()}</ContactListWrapper>
