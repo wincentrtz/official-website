@@ -10,12 +10,9 @@ export const GlobalStyle = createGlobalStyle`
   body {
     background-color: ${COLOR.PRIMARY};
     color: white;
-    padding: 0 60px;
     font-family: Sailect;
     overflow: hidden;
-    @media (max-width: 768px) {
-      padding: 0 20px;
-    }
+    margin: 0;
   }
   ::-webkit-scrollbar {
     width: 0px;  /* Remove scrollbar space */

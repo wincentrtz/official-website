@@ -2,12 +2,12 @@ import styled from "styled-components";
 import COLOR from "constants/apps/colors";
 
 export const ExperienceContainer = styled.div`
-  margin: 0px 8vw;
+  margin: 0px 12vw;
   display: flex;
   flex-direction: column;
   text-align: center;
   @media (max-width: 1024px) {
-    margin: 0px 2vw;
+    margin: 0px 4vw;
   }
   @media (max-width: 768px) {
     margin: 0;
