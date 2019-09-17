@@ -6,7 +6,7 @@ export const NavbarContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   position: absolute;
-  width: 90vw;
+  width: 93vw;
   z-index: 999;
 `;
 export const NavbarLeftSection = styled.img`

@@ -3,7 +3,7 @@ import COLOR from "constants/apps/colors";
 
 export const ContactDetailContainer = styled.div`
   background-color: ${COLOR.SECONDARY};
-  padding: 5vh 11vw;
+  padding: 1vh 11vw 20vh 11vw;
 `;
 
 export const ContactListWrapper = styled.ul``;

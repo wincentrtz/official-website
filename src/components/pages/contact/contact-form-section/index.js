@@ -17,8 +17,8 @@ const ContactFormSection = () => (
       <EmailLabel>wincent@budak.com</EmailLabel>
     </InputGroup>
     <InputGroup>
-      <label>Message</label>
-      <MessageTextArea />
+      <label>Text Message</label>
+      <MessageTextArea rows="3" />
     </InputGroup>
   </ContactFormContainer>
 );

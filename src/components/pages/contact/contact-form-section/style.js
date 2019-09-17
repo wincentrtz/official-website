@@ -5,7 +5,7 @@ export const ContactFormContainer = styled.div`
   position: absolute;
   right: 20vw;
   width: 16vw;
-  bottom: 36vh;
+  bottom: 32vh;
   padding: 8vh 2vw;
   background-color: ${COLOR.SECONDARY};
   box-shadow: 0px 5px 10px 3px #000000;
@@ -27,10 +27,10 @@ export const NameTextField = styled.input`
   border-style: none none solid none;
   border-color: white;
   color: white;
+  font-weight: bolder;
   &:focus {
     outline: none;
   }
-  font-weight: bolder;
 `;
 
 export const EmailLabel = styled.label`
@@ -40,4 +40,9 @@ export const EmailLabel = styled.label`
 export const MessageTextArea = styled.textarea`
   background-color: transparent;
   resize: none;
+  border-style: none none solid none;
+  color: white;
+  &:focus {
+    outline: none;
+  }
 `;

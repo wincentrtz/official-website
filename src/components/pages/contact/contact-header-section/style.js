@@ -6,16 +6,18 @@ export const ContactHeaderContainer = styled.div`
   align-items: flex-end;
   width: 50vw;
   padding: 5vh 12vw;
+  margin-top: 20vh;
   @media (max-width: 768px) {
     width: 70vw;
   }
 `;
 
-export const ContactContentSection = styled.div`
-  flex: 4;
+export const ContactContentSection = styled.h2`
+  flex: 2;
   margin-right: 1vw;
+  font-weight: normal;
   @media (max-width: 768px) {
-    fons-size: 0.6em;
+    font-size: 1em;
   }
 `;
 
