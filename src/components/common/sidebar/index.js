@@ -38,7 +38,11 @@ const Sidebar = ({ isSidebarActive, history, location }) => {
   const handleGoToPage = index => {
     history.push({ pathname: sidebarList[index] });
   };
-  return <SidebarContainer>{renderSidebarItem()}</SidebarContainer>;
+  return (
+    <SidebarContainer isActive={isSidebarActive}>
+      {renderSidebarItem()}
+    </SidebarContainer>
+  );
 };
 
 const mapStateToProps = ({ sidebarReducers }) => {

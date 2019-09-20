@@ -3,9 +3,9 @@ import COLOR from "constants/apps/colors";
 
 export const SidebarContainer = styled.div`
   position: absolute;
-  width: 3vw;
+  width: ${props => (props.isActive ? "auto" : "3vw")};
   top: 30%;
-  right: 4%;
+  right: ${props => (props.isActive ? "3.5vw" : "2.8vw")};
   @media (max-width: 768px) {
     display: none;
   }

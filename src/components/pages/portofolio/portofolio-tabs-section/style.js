@@ -4,6 +4,7 @@ import COLOR from "constants/apps/colors";
 export const TabsContainer = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100%;
 `;
 
