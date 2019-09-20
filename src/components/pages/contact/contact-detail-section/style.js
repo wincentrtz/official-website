@@ -6,9 +6,15 @@ export const ContactDetailContainer = styled.div`
   padding: 1vh 11vw 20vh 11vw;
 `;
 
-export const ContactListWrapper = styled.ul``;
+export const ContactListWrapper = styled.ul`
+  list-style-type: none;
+`;
 
 export const ContactList = styled.li`
   color: ${COLOR.FONT_PRIMARY};
   margin: 10px 0px;
+  &:before {
+    content: "-  ";
+    color: white;
+  }
 `;

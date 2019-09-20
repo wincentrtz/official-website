@@ -13,7 +13,7 @@ export const ContactHeaderContainer = styled.div`
 `;
 
 export const ContactContentSection = styled.h2`
-  flex: 2;
+  flex: 3;
   margin-right: 1vw;
   font-weight: normal;
   @media (max-width: 768px) {

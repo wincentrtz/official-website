@@ -2,7 +2,7 @@ import styled from "styled-components";
 import COLOR from "constants/apps/colors";
 
 export const PortofolioContainer = styled.div`
-  margin: 0px 8vw;
+  margin: 0px 12vw;
   text-align: center;
 `;
 

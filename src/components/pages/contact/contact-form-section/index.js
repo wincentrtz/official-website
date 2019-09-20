@@ -4,7 +4,8 @@ import {
   ContactFormContainer,
   EmailLabel,
   MessageTextArea,
-  InputGroup
+  InputGroup,
+  SubmitButton
 } from "./style";
 
 const ContactFormSection = () => (
@@ -20,6 +21,7 @@ const ContactFormSection = () => (
       <label>Text Message</label>
       <MessageTextArea rows="3" />
     </InputGroup>
+    <SubmitButton>Submit</SubmitButton>
   </ContactFormContainer>
 );
 

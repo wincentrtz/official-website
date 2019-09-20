@@ -5,7 +5,7 @@ export const SidebarContainer = styled.div`
   position: absolute;
   width: ${props => (props.isActive ? "auto" : "3vw")};
   top: 30%;
-  right: ${props => (props.isActive ? "3.5vw" : "2vw")};
+  right: ${props => (props.isActive ? "3.5vw" : "2.8vw")};
   @media (max-width: 768px) {
     display: none;
   }
