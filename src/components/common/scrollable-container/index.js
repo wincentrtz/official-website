@@ -19,7 +19,7 @@ const ScrollableContainer = ({ children, location, history }) => {
     if (isUseOnePageScroll(clientX, clientY)) {
       setIsScrolling(true);
       const direction = deltaY < 0 ? UP : DOWN;
-      hanleUpdateCurrentPage(direction, page);
+      handleUpdateCurrentPage(direction, page);
       setTimeout(() => {
         setIsScrolling(false);
       }, 2000);
@@ -41,7 +41,7 @@ const ScrollableContainer = ({ children, location, history }) => {
   const verticalPositionByPercentage = yAxis =>
     ((yAxis % ONE_PAGE_HEIGHT_PROPERTY) * 100) / ONE_PAGE_HEIGHT_PROPERTY;
 
-  const hanleUpdateCurrentPage = (direction, page) => {
+  const handleUpdateCurrentPage = (direction, page) => {
     if (direction === UP && page.pageNumber !== 0)
       history.push({ pathname: page.prevPage });
     else if (direction === DOWN && page.pageNumber !== 4)
